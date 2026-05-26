@@ -1,0 +1,6 @@
+{
+  "name": "Vettecraft By Ivette",
+  "description": "Sweet, cozy, and minimalistic home decor and personalized gifts store positioned in Miami FL.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

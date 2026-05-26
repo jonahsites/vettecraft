@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Lora", "Times New Roman", Times, ui-serif, serif;
+  --font-script: "Playfair Display", "Times New Roman", Times, ui-serif, serif;
+  --font-serif: "Times New Roman", Times, ui-serif, serif;
+
+  --color-clean-bg: #FFFBF9;
+  --color-clean-text: #4A4A4A;
+  
+  --color-pastel-pink: #FEECEC;
+  --color-pastel-pink-text: #7C5C5C;
+  --color-pastel-pink-border: #FFD1DC;
+  
+  --color-pastel-blue: #E0F2FF;
+  --color-pastel-blue-text: #5B7A8E;
+  --color-pastel-blue-border: #B4D4EE;
+  
+  --color-pastel-purple: #FAF0FF;
+  --color-pastel-purple-text: #8A718F;
+  --color-pastel-purple-border: #E0BBE4;
+
+  --color-pastel-orange: #FFF2E6;
+  --color-pastel-orange-border: #FFE0CC;
+  
+  --color-gold-text: #D1B48C;
+  --color-gray-text: #A0A0A0;
+}
+
+.gold-gradient-text {
+  font-family: var(--font-script);
+  background: linear-gradient(45deg, #BF953F 25%, #FCF6BA 50%, #B38728 75%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  font-style: italic;
+  display: inline-block;
+  padding-bottom: 0.1em;
+}
+
+.soft-shadow {
+  box-shadow: 0 10px 30px -10px rgba(0,0,0,0.05);
+}
+
+.bg-mesh {
+  background-color: var(--color-clean-bg);
+}
