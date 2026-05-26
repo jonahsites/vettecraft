@@ -85,8 +85,8 @@ export function CustomWoodSign() {
   return (
     <div className="w-full max-w-[1400px] mx-auto p-4 sm:p-8">
       <div className="text-center mb-8 sm:mb-12">
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-script font-bold gold-gradient-text mb-3 sm:mb-4">Request a Custom Piece</h2>
-        <p className="text-xs sm:text-sm font-medium text-gray-text max-w-2xl mx-auto leading-relaxed px-2 sm:px-0">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-adren font-bold gold-gradient-text mb-3 sm:mb-4">Request a Custom Piece</h2>
+        <p className="text-xs sm:text-sm font-medium text-brand-taupe max-w-2xl mx-auto leading-relaxed px-2 sm:px-0">
           Design your perfect wood burned sign. Preview your image and text below, then submit your request. Our artists will manually refine your image, remove backgrounds, and perfect the design before burning.
         </p>
       </div>
@@ -94,31 +94,31 @@ export function CustomWoodSign() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
         {/* Controls - Left Panel */}
         <div className="lg:col-span-5 xl:col-span-4 order-2 lg:order-1">
-          <form onSubmit={handleSubmit} className="bg-white/50 backdrop-blur-md rounded-[24px] sm:rounded-[32px] p-5 sm:p-6 md:p-8 soft-shadow border border-[#F5EDE8] space-y-6 sm:space-y-8 relative overflow-hidden">
+          <form onSubmit={handleSubmit} className="bg-white/50 backdrop-blur-md rounded-[24px] sm:rounded-[32px] p-5 sm:p-6 md:p-8 soft-shadow border border-brand-beige space-y-6 sm:space-y-8 relative overflow-hidden">
             {isSubmitted && (
               <motion.div 
                 initial={{ opacity: 0 }} 
                 animate={{ opacity: 1 }} 
-                className="absolute inset-0 z-50 bg-[#F5EDE8] flex flex-col items-center justify-center p-8 text-center"
+                className="absolute inset-0 z-50 bg-brand-cream flex flex-col items-center justify-center p-8 text-center"
               >
-                <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center text-[#7C5C5C] mb-4 soft-shadow">
+                <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center text-brand-olive mb-4 soft-shadow">
                   <Check size={32} />
                 </div>
-                <h3 className="font-script text-4xl text-[#7C5C5C] mb-2">Request Sent!</h3>
-                <p className="text-sm text-gray-text">We've received your custom design request. We'll be in touch via email soon with a final proof.</p>
+                <h3 className="font-serif font-bold text-4xl text-brand-charcoal mb-2">Request Sent!</h3>
+                <p className="text-sm text-brand-taupe">We've received your custom design request. We'll be in touch via email soon with a final proof.</p>
               </motion.div>
             )}
 
             {/* Design Steps */}
             <div className="space-y-6">
-              <div className="flex items-center gap-3 border-b border-[#F5EDE8] pb-4">
-                <span className="w-8 h-8 rounded-full bg-[#EAE2D8] text-[#7C5C5C] font-bold flex items-center justify-center text-sm">1</span>
-                <h3 className="font-bold text-[#7C5C5C] text-lg">Design Details</h3>
+              <div className="flex items-center gap-3 border-b border-brand-beige pb-4">
+                <span className="w-8 h-8 rounded-full bg-brand-beige text-brand-charcoal font-bold flex items-center justify-center text-sm">1</span>
+                <h3 className="font-bold text-brand-charcoal text-lg">Design Details</h3>
               </div>
 
               {/* Shape Selection */}
               <div>
-                <label className="text-xs font-bold uppercase tracking-widest text-[#A68F8F] mb-3 block">Canvas Shape</label>
+                <label className="text-xs font-bold uppercase tracking-widest text-brand-taupe mb-3 block">Canvas Shape</label>
                 <div className="grid grid-cols-2 gap-2">
                   {SHAPES.map((s) => (
                     <button
@@ -127,8 +127,8 @@ export function CustomWoodSign() {
                       onClick={() => setSelectedShape(s)}
                       className={`py-3 px-2 rounded-[16px] text-xs font-bold transition-all border ${
                         selectedShape.id === s.id 
-                          ? "bg-white text-[#7C5C5C] border-white soft-shadow scale-[1.02]" 
-                          : "bg-transparent text-[#A68F8F] border-[#EAE2D8] hover:bg-white/50"
+                          ? "bg-white text-brand-charcoal border-white soft-shadow scale-[1.02]" 
+                          : "bg-transparent text-brand-taupe border-brand-cream hover:bg-white/50"
                       }`}
                     >
                       {s.name}
@@ -139,7 +139,7 @@ export function CustomWoodSign() {
 
               {/* Image Upload */}
               <div>
-                <label className="text-xs font-bold uppercase tracking-widest text-[#A68F8F] mb-3 block">Main Subject</label>
+                <label className="text-xs font-bold uppercase tracking-widest text-brand-taupe mb-3 block">Main Subject</label>
                 <input 
                   type="file"
                   accept="image/*"
@@ -150,9 +150,9 @@ export function CustomWoodSign() {
                 <button 
                   type="button"
                   onClick={handleClickUpload}
-                  className="w-full py-4 px-4 bg-white/60 rounded-[20px] text-sm font-medium text-[#7C5C5C] hover:bg-white transition-all border border-white dashed-border flex flex-col items-center justify-center gap-3 min-h-[100px]"
+                  className="w-full py-4 px-4 bg-white/60 rounded-[20px] text-sm font-medium text-brand-charcoal hover:bg-white transition-all border border-white dashed-border flex flex-col items-center justify-center gap-3 min-h-[100px]"
                 >
-                  <div className="w-10 h-10 rounded-full bg-[#F5EDE8] flex items-center justify-center text-[#A68F8F]">
+                  <div className="w-10 h-10 rounded-full bg-brand-cream flex items-center justify-center text-brand-taupe">
                     {image ? <ImageIcon size={18} /> : <Upload size={18} />}
                   </div>
                   <span>{image ? "Change Image" : "Click to Upload Image"}</span>
@@ -160,15 +160,15 @@ export function CustomWoodSign() {
                 {image && (
                   <div className="mt-4 px-2">
                     <div className="flex justify-between items-center mb-2">
-                      <label className="text-[10px] font-bold uppercase tracking-widest text-[#A68F8F]">Image Size</label>
-                      <span className="text-[10px] text-[#A68F8F]">{Math.round(imgScale * 100)}%</span>
+                       <label className="text-[10px] font-bold uppercase tracking-widest text-brand-taupe">Image Size</label>
+                      <span className="text-[10px] text-brand-taupe">{Math.round(imgScale * 100)}%</span>
                     </div>
                     <input 
                       type="range" 
                       min="0.2" max="2" step="0.05" 
                       value={imgScale} 
                       onChange={(e) => setImgScale(parseFloat(e.target.value))}
-                      className="w-full accent-[#7C5C5C]"
+                      className="w-full accent-brand-charcoal"
                     />
                   </div>
                 )}
@@ -177,18 +177,18 @@ export function CustomWoodSign() {
               {/* Remove Background Toggle */}
               <div className="flex items-center justify-between p-4 bg-white/40 rounded-[16px] border border-white/50">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 bg-[#F5EDE8] rounded-full text-[#7C5C5C]">
+                  <div className="p-2 bg-brand-cream rounded-full text-brand-charcoal">
                     <Eraser size={16} />
                   </div>
                   <div>
-                    <h4 className="text-sm font-bold text-[#7C5C5C]">Remove Background</h4>
-                    <p className="text-[10px] text-[#A68F8F] uppercase tracking-wide mt-0.5">Auto-detects contrast</p>
+                    <h4 className="text-sm font-bold text-brand-charcoal">Remove Background</h4>
+                    <p className="text-[10px] text-brand-taupe uppercase tracking-wide mt-0.5">Auto-detects contrast</p>
                   </div>
                 </div>
                 <button 
                   type="button"
                   onClick={() => setRemoveBg(!removeBg)}
-                  className={`w-12 h-6 rounded-full p-1 transition-colors relative flex items-center ${removeBg ? "bg-[#7C5C5C]" : "bg-[#D8CFC4]"}`}
+                  className={`w-12 h-6 rounded-full p-1 transition-colors relative flex items-center ${removeBg ? "bg-brand-sage" : "bg-brand-beige"}`}
                 >
                   <motion.div 
                     initial={false}
@@ -200,25 +200,25 @@ export function CustomWoodSign() {
 
               {/* Text Input */}
               <div>
-                <label className="text-xs font-bold uppercase tracking-widest text-[#A68F8F] mb-3 block">Engraving Text</label>
+                <label className="text-xs font-bold uppercase tracking-widest text-brand-taupe mb-3 block">Engraving Text</label>
                 <textarea
                   value={text}
                   onChange={(e) => setText(e.target.value)}
                   placeholder="Enter your custom message, names, or date..."
-                  className="w-full bg-white/60 rounded-[20px] p-4 text-sm text-[#7C5C5C] placeholder-[#A68F8F] focus:outline-none focus:ring-2 focus:ring-white border border-white transition-all resize-none h-24"
+                  className="w-full bg-white/60 rounded-[20px] p-4 text-sm text-brand-charcoal placeholder-brand-taupe focus:outline-none focus:ring-2 focus:ring-white border border-white transition-all resize-none h-24"
                 />
                 {text && (
                   <div className="mt-4 px-2">
                     <div className="flex justify-between items-center mb-2">
-                      <label className="text-[10px] font-bold uppercase tracking-widest text-[#A68F8F]">Text Size</label>
-                      <span className="text-[10px] text-[#A68F8F]">{Math.round(textScale * 100)}%</span>
+                      <label className="text-[10px] font-bold uppercase tracking-widest text-brand-taupe">Text Size</label>
+                      <span className="text-[10px] text-brand-taupe">{Math.round(textScale * 100)}%</span>
                     </div>
                     <input 
                       type="range" 
                       min="0.5" max="3" step="0.1" 
                       value={textScale} 
                       onChange={(e) => setTextScale(parseFloat(e.target.value))}
-                      className="w-full accent-[#7C5C5C]"
+                      className="w-full accent-brand-charcoal"
                     />
                   </div>
                 )}
@@ -227,7 +227,7 @@ export function CustomWoodSign() {
               {/* Font Selection */}
               {text && (
                 <div>
-                  <label className="text-xs font-bold uppercase tracking-widest text-[#A68F8F] mb-3 block">Typography</label>
+                  <label className="text-xs font-bold uppercase tracking-widest text-brand-taupe mb-3 block">Typography</label>
                   <div className="grid grid-cols-2 gap-2">
                     {FONTS.map((f) => (
                       <button
@@ -236,8 +236,8 @@ export function CustomWoodSign() {
                         onClick={() => setSelectedFont(f)}
                         className={`py-3 px-2 rounded-[16px] text-sm transition-all border ${f.class} ${
                           selectedFont.id === f.id 
-                            ? "bg-white text-[#7C5C5C] border-white soft-shadow scale-[1.02]" 
-                            : "bg-transparent text-[#A68F8F] border-[#EAE2D8] hover:bg-white/50"
+                            ? "bg-white text-brand-charcoal border-white soft-shadow scale-[1.02]" 
+                            : "bg-transparent text-brand-taupe border-brand-cream hover:bg-white/50"
                         }`}
                       >
                         {f.name}
@@ -249,21 +249,21 @@ export function CustomWoodSign() {
             </div>
 
             {/* Contact Steps */}
-            <div className="space-y-6 pt-4 border-t border-[#F5EDE8]">
+            <div className="space-y-6 pt-4 border-t border-brand-beige">
               <div className="flex items-center gap-3 pb-2">
-                <span className="w-8 h-8 rounded-full bg-[#EAE2D8] text-[#7C5C5C] font-bold flex items-center justify-center text-sm">2</span>
-                <h3 className="font-bold text-[#7C5C5C] text-lg">Contact Info</h3>
+                <span className="w-8 h-8 rounded-full bg-brand-beige text-brand-charcoal font-bold flex items-center justify-center text-sm">2</span>
+                <h3 className="font-bold text-brand-charcoal text-lg">Contact Info</h3>
               </div>
 
               <div className="relative">
-                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-[#A68F8F]" size={16} />
+                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-brand-taupe" size={16} />
                 <input
                   type="email"
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Your Email Address"
-                  className="w-full bg-white/60 rounded-[16px] py-4 pl-12 pr-4 text-sm text-[#7C5C5C] placeholder-[#A68F8F] focus:outline-none focus:ring-2 focus:ring-white border border-white transition-all"
+                  className="w-full bg-white/60 rounded-[16px] py-4 pl-12 pr-4 text-sm text-brand-charcoal placeholder-brand-taupe focus:outline-none focus:ring-2 focus:ring-white border border-white transition-all"
                 />
               </div>
 
@@ -272,14 +272,14 @@ export function CustomWoodSign() {
                   value={details}
                   onChange={(e) => setDetails(e.target.value)}
                   placeholder="Any specific requests? (e.g. 'Make the dog larger', 'Put text at bottom')"
-                  className="w-full bg-white/60 rounded-[16px] p-4 text-sm text-[#7C5C5C] placeholder-[#A68F8F] focus:outline-none focus:ring-2 focus:ring-white border border-white transition-all resize-none h-20"
+                  className="w-full bg-white/60 rounded-[16px] p-4 text-sm text-brand-charcoal placeholder-brand-taupe focus:outline-none focus:ring-2 focus:ring-white border border-white transition-all resize-none h-20"
                 />
               </div>
 
               <button 
                 type="submit"
                 disabled={isSubmitting || !email}
-                className="w-full py-4 px-6 bg-[#3B2C2C] text-white rounded-[20px] font-bold hover:bg-[#2A1F1F] transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                className="w-full py-4 px-6 bg-brand-olive text-white rounded-[20px] font-bold hover:bg-[#687460] transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
               >
                 {isSubmitting ? (
                   <motion.div
@@ -300,7 +300,7 @@ export function CustomWoodSign() {
         {/* Preview Area - Right Panel */}
         <div className="lg:col-span-7 xl:col-span-8 order-1 lg:order-2 flex flex-col items-center justify-center h-full">
           {(image || text) && (
-            <div className="mb-4 text-[#A68F8F] text-xs font-bold tracking-widest uppercase flex items-center gap-2">
+            <div className="mb-4 text-brand-taupe text-xs font-bold tracking-widest uppercase flex items-center gap-2">
               <Move size={14} /> You can drag elements to position
             </div>
           )}
@@ -420,7 +420,7 @@ export function CustomWoodSign() {
             </motion.div>
           </div>
 
-          <p className="text-center mt-6 text-xs uppercase font-bold text-[#A68F8F] tracking-wider max-w-md">
+          <p className="text-center mt-6 text-xs uppercase font-bold text-brand-taupe tracking-wider max-w-md">
             *This is a digital preview. Final physical product may vary slightly in texture, color, and contrast.
           </p>
         </div>
