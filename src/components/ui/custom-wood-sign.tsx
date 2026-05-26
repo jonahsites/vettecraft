@@ -104,7 +104,7 @@ export function CustomWoodSign() {
                 <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center text-brand-olive mb-4 soft-shadow">
                   <Check size={32} />
                 </div>
-                <h3 className="font-serif font-bold text-4xl text-brand-charcoal mb-2">Request Sent!</h3>
+                <h3 className="font-adren font-bold text-4xl text-brand-charcoal mb-2">Request Sent!</h3>
                 <p className="text-sm text-brand-taupe">We've received your custom design request. We'll be in touch via email soon with a final proof.</p>
               </motion.div>
             )}

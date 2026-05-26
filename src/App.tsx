@@ -121,7 +121,7 @@ export default function App() {
       </div>
 
       {/* Navigation */}
-      <nav className="absolute top-0 w-full p-4 sm:p-6 flex flex-col sm:flex-row justify-center sm:justify-between items-center z-50 max-w-7xl mx-auto left-0 right-0 gap-4 sm:gap-0">
+      <nav className="absolute top-0 w-full p-6 sm:p-6 flex flex-row justify-center sm:justify-between items-center z-50 max-w-7xl mx-auto left-0 right-0 gap-4 sm:gap-0">
         <motion.div 
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -134,7 +134,7 @@ export default function App() {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="flex flex-wrap justify-center gap-4 sm:gap-8 text-[9px] sm:text-[11px] uppercase tracking-[0.2em] font-semibold text-brand-taupe"
+          className="hidden sm:flex flex-wrap justify-center gap-4 sm:gap-8 text-[9px] sm:text-[11px] uppercase tracking-[0.2em] font-semibold text-brand-taupe"
         >
           <li className={`hover:text-brand-olive transition-colors cursor-pointer ${activeTab === 'shop' ? 'text-brand-olive' : ''}`} onClick={() => scrollToSection('shop')}>Shop</li>
           <li className={`hover:text-brand-olive transition-colors cursor-pointer ${activeTab === 'gallery' ? 'text-brand-olive' : ''}`} onClick={() => scrollToSection('gallery')}>Gallery</li>
@@ -142,6 +142,45 @@ export default function App() {
           <li className={`hover:text-brand-olive transition-colors cursor-pointer ${activeTab === 'contact' ? 'text-brand-olive' : ''}`} onClick={() => scrollToSection('contact')}>Contact</li>
         </motion.ul>
       </nav>
+
+      {/* Modern fluid bottom navigation bar for mobile only */}
+      <motion.div 
+        initial={{ y: 80, opacity: 0, x: "-50%" }}
+        animate={{ y: 0, opacity: 1, x: "-50%" }}
+        transition={{ delay: 0.3, duration: 0.5, ease: "easeOut" }}
+        className="fixed bottom-5 left-1/2 -translate-x-1/2 z-50 bg-[#F7F3EEDD]/90 backdrop-blur-lg rounded-full shadow-2xl border border-brand-beige px-6 py-3 flex sm:hidden items-center gap-6"
+      >
+        <button 
+          onClick={() => scrollToSection('home')} 
+          className={`flex flex-col items-center justify-center p-2 rounded-full transition-all duration-300 ${activeTab === 'home' ? 'text-brand-olive bg-white/80 scale-110 shadow-sm' : 'text-brand-taupe hover:text-brand-olive'}`}
+        >
+          <Home size={18} strokeWidth={2} />
+        </button>
+        <button 
+          onClick={() => scrollToSection('shop')} 
+          className={`flex flex-col items-center justify-center p-2 rounded-full transition-all duration-300 ${activeTab === 'shop' ? 'text-brand-olive bg-white/80 scale-110 shadow-sm' : 'text-brand-taupe hover:text-brand-olive'}`}
+        >
+          <Sparkles size={18} strokeWidth={2} />
+        </button>
+        <button 
+          onClick={() => scrollToSection('gallery')} 
+          className={`flex flex-col items-center justify-center p-2 rounded-full transition-all duration-300 ${activeTab === 'gallery' ? 'text-brand-olive bg-white/80 scale-110 shadow-sm' : 'text-brand-taupe hover:text-brand-olive'}`}
+        >
+          <Heart size={18} strokeWidth={2} />
+        </button>
+        <button 
+          onClick={() => scrollToSection('about')} 
+          className={`flex flex-col items-center justify-center p-2 rounded-full transition-all duration-300 ${activeTab === 'about' ? 'text-brand-olive bg-white/80 scale-110 shadow-sm' : 'text-brand-taupe hover:text-brand-olive'}`}
+        >
+          <User size={18} strokeWidth={2} />
+        </button>
+        <button 
+          onClick={() => scrollToSection('contact')} 
+          className={`flex flex-col items-center justify-center p-2 rounded-full transition-all duration-300 ${activeTab === 'contact' ? 'text-brand-olive bg-white/80 scale-110 shadow-sm' : 'text-brand-taupe hover:text-brand-olive'}`}
+        >
+          <Mail size={18} strokeWidth={2} />
+        </button>
+      </motion.div>
 
       {/* Enhanced Hero Section (Bento Grid) */}
       <section id="home" className="pt-32 sm:pt-40 md:pt-32 pb-12 sm:pb-16 px-4 sm:px-6 max-w-7xl mx-auto w-full relative z-10">
@@ -163,24 +202,24 @@ export default function App() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="flex-1 flex flex-col justify-between p-8 sm:p-10 md:p-14 bg-brand-beige rounded-[32px] sm:rounded-[48px] relative overflow-hidden soft-shadow"
+            className="flex-1 flex flex-col justify-between p-6 sm:p-10 md:p-14 bg-brand-beige rounded-[28px] sm:rounded-[48px] relative overflow-hidden soft-shadow"
           >
             <div className="z-10 bg-white/40 absolute -right-32 -bottom-32 w-80 sm:w-96 h-80 sm:h-96 rounded-full blur-3xl pointer-events-none"></div>
             
-            <div className="z-10 relative mt-4 sm:mt-0">
-              <span className="inline-block px-4 py-1.5 bg-white rounded-full text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-brand-olive mb-6 sm:mb-8 shadow-sm border border-white soft-shadow">
+            <div className="z-10 relative mt-2 sm:mt-0">
+              <span className="inline-block px-4 py-1.5 bg-white rounded-full text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-brand-olive mb-4 sm:mb-8 shadow-sm border border-white soft-shadow">
                 New Collection
               </span>
-              <h1 className="text-5xl sm:text-6xl md:text-8xl font-bold font-adren text-brand-charcoal leading-[1.1] mb-4 sm:mb-6">
+              <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold font-adren text-brand-charcoal leading-[1.1] mb-4 sm:mb-6">
                 Cozy Home <br/>
-                <span className="font-script font-normal">Essentials</span>
+                <span className="font-adren font-normal">Essentials</span>
               </h1>
-              <p className="text-xs sm:text-sm text-brand-charcoal/80 max-w-sm mb-6 sm:mb-8 leading-relaxed font-medium">
+              <p className="text-xs sm:text-sm text-brand-charcoal/80 max-w-sm mb-4 sm:mb-8 leading-relaxed font-medium">
                 Discover pieces crafted with love in South Florida, blending modern minimalism with charming details perfectly suited for your everyday life.
               </p>
             </div>
 
-            <div className="z-10 relative mt-auto pt-6 sm:pt-8 pb-4 sm:pb-0 text-center sm:text-left">
+            <div className="z-10 relative mt-auto pt-4 sm:pt-8 pb-2 sm:pb-0 text-center sm:text-left">
               <button 
                 onClick={() => scrollToSection('shop')}
                 className="w-full sm:w-auto px-8 py-4 bg-brand-sage text-white rounded-full text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-brand-olive transition-all shadow-lg hover:shadow-xl hover:-translate-y-1 active:scale-95"
@@ -200,19 +239,19 @@ export default function App() {
             </div>
           </motion.div>
 
-          {/* Right Stacked Cards */}
-          <div className="w-full lg:w-80 flex flex-col sm:flex-row lg:flex-col gap-6">
+          {/* Right Stacked Cards - side-by-side on mobile, stacked on desktop */}
+          <div className="w-full lg:w-80 flex flex-row lg:flex-col gap-4 sm:gap-6">
             <motion.div 
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2, duration: 0.6 }}
-              className="flex-1 bg-brand-sage rounded-[32px] sm:rounded-[40px] p-6 sm:p-8 flex flex-col justify-center items-center text-center border-b-4 border-brand-olive/20 soft-shadow group hover:-translate-y-1 transition-transform cursor-pointer"
+              className="flex-1 bg-brand-sage rounded-[24px] sm:rounded-[40px] p-4 sm:p-8 flex flex-col justify-center items-center text-center border-b-4 border-brand-olive/20 soft-shadow group hover:-translate-y-1 transition-transform cursor-pointer"
             >
-              <div className="w-12 h-12 sm:w-14 sm:h-14 bg-white rounded-full flex items-center justify-center mb-4 sm:mb-5 group-hover:scale-110 transition-transform shadow-sm">
-                <Gift size={20} className="sm:w-[24px] sm:h-[24px] text-brand-olive" strokeWidth={1.5} />
+              <div className="w-10 h-10 sm:w-14 sm:h-14 bg-white rounded-full flex items-center justify-center mb-3 sm:mb-5 group-hover:scale-110 transition-transform shadow-sm">
+                <Gift size={16} className="sm:w-[24px] sm:h-[24px] text-brand-olive" strokeWidth={1.5} />
               </div>
-              <h3 className="text-lg sm:text-xl font-medium font-serif text-white">Personalized Gifts</h3>
-              <p className="text-[9px] sm:text-[10px] mt-2 text-white/80 px-2 sm:px-4 font-bold uppercase tracking-widest leading-relaxed">Made just for you</p>
+              <h3 className="text-sm sm:text-xl font-medium font-adren text-white">Personalized Gifts</h3>
+              <p className="text-[8px] sm:text-[10px] mt-1 sm:mt-2 text-white/80 px-1 sm:px-4 font-bold uppercase tracking-widest leading-relaxed">Made just for you</p>
             </motion.div>
             
             <motion.div 
@@ -220,13 +259,13 @@ export default function App() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.4, duration: 0.6 }}
               onClick={() => scrollToSection('shop')}
-              className="flex-1 bg-white rounded-[32px] sm:rounded-[40px] p-6 sm:p-8 flex flex-col justify-center items-center text-center border-b-4 border-brand-cream soft-shadow group hover:-translate-y-1 transition-transform cursor-pointer"
+              className="flex-1 bg-white rounded-[24px] sm:rounded-[40px] p-4 sm:p-8 flex flex-col justify-center items-center text-center border-b-4 border-brand-cream soft-shadow group hover:-translate-y-1 transition-transform cursor-pointer"
             >
-              <div className="w-12 h-12 sm:w-14 sm:h-14 bg-brand-cream rounded-full flex items-center justify-center mb-4 sm:mb-5 group-hover:scale-110 transition-transform shadow-sm">
-                <Sparkles size={20} className="sm:w-[24px] sm:h-[24px] text-brand-charcoal" strokeWidth={1.5} />
+              <div className="w-10 h-10 sm:w-14 sm:h-14 bg-brand-cream rounded-full flex items-center justify-center mb-3 sm:mb-5 group-hover:scale-110 transition-transform shadow-sm">
+                <Sparkles size={16} className="sm:w-[24px] sm:h-[24px] text-brand-charcoal" strokeWidth={1.5} />
               </div>
-              <h3 className="text-lg sm:text-xl font-medium font-serif text-brand-charcoal">Curation Box</h3>
-              <p className="text-[9px] sm:text-[10px] mt-2 text-brand-taupe px-2 sm:px-4 font-bold uppercase tracking-widest leading-relaxed">Seasonal Surprises</p>
+              <h3 className="text-sm sm:text-xl font-medium font-adren text-brand-charcoal">Curation Box</h3>
+              <p className="text-[8px] sm:text-[10px] mt-1 sm:mt-2 text-brand-taupe px-1 sm:px-4 font-bold uppercase tracking-widest leading-relaxed">Seasonal Surprises</p>
             </motion.div>
           </div>
         </div>
@@ -297,7 +336,7 @@ export default function App() {
                   <div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white flex items-center justify-center mb-6 shadow-sm group-hover:scale-110 transition-transform duration-300 ${service.textColor}`}>
                     <Icon size={20} className="sm:w-[24px] sm:h-[24px]" strokeWidth={1.5} />
                   </div>
-                  <h3 className={`text-lg sm:text-xl font-medium font-serif ${service.textColor}`}>{service.title}</h3>
+                  <h3 className={`text-lg sm:text-xl font-medium font-adren ${service.textColor}`}>{service.title}</h3>
                   <p className={`text-[10px] sm:text-[11px] uppercase tracking-wider mt-3 ${service.subTextColor} px-2 leading-relaxed font-bold`}>
                     {service.description}
                   </p>
@@ -454,7 +493,7 @@ export default function App() {
       </section>
 
       {/* Footer */}
-      <footer className="py-8 px-4 sm:px-16 flex flex-col md:flex-row justify-between border-t border-brand-beige/50 items-center text-[8px] sm:text-[9px] uppercase tracking-[0.2em] font-bold text-brand-taupe gap-6 md:gap-0 relative z-10 w-full overflow-hidden text-center sm:text-left">
+      <footer className="py-8 pb-28 sm:pb-8 px-4 sm:px-16 flex flex-col md:flex-row justify-between border-t border-brand-beige/50 items-center text-[8px] sm:text-[9px] uppercase tracking-[0.2em] font-bold text-brand-taupe gap-6 md:gap-0 relative z-10 w-full overflow-hidden text-center sm:text-left">
         <span className="flex-1 w-full text-center md:text-left break-words">© {new Date().getFullYear()} Vettecraft By Ivette</span>
         
         <div className="flex items-center gap-2 sm:gap-4 text-center justify-center flex-1 whitespace-nowrap">

@@ -24,7 +24,6 @@ body {
 }
 
 .gold-gradient-text {
-  font-family: var(--font-script);
   color: var(--color-brand-olive);
   font-style: normal;
   display: inline-block;

@@ -5,3 +5,7 @@
   font-style: normal;
   font-display: swap;
 }
+
+.font-adren {
+  font-family: 'Adren', "Charter", "Lora", serif !important;
+}
