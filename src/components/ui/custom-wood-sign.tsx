@@ -1,4 +1,4 @@
-import { useState, useRef, FormEvent } from "react";
+import { useState, useRef, FormEvent, ChangeEvent } from "react";
 import { motion } from "motion/react";
 import { Upload, Type, Eraser, Check, Mail, Send, Image as ImageIcon, Sparkles, Move } from "lucide-react";
 
@@ -33,7 +33,7 @@ export function CustomWoodSign() {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const canvasRef = useRef<HTMLDivElement>(null);
 
-  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleImageUpload = (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
       const url = URL.createObjectURL(file);
@@ -84,9 +84,9 @@ export function CustomWoodSign() {
 
   return (
     <div className="w-full max-w-[1400px] mx-auto p-4 sm:p-8">
-      <div className="text-center mb-12">
-        <h2 className="text-4xl md:text-5xl font-script font-bold gold-gradient-text mb-4">Request a Custom Piece</h2>
-        <p className="text-sm font-medium text-gray-text max-w-2xl mx-auto leading-relaxed">
+      <div className="text-center mb-8 sm:mb-12">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-script font-bold gold-gradient-text mb-3 sm:mb-4">Request a Custom Piece</h2>
+        <p className="text-xs sm:text-sm font-medium text-gray-text max-w-2xl mx-auto leading-relaxed px-2 sm:px-0">
           Design your perfect wood burned sign. Preview your image and text below, then submit your request. Our artists will manually refine your image, remove backgrounds, and perfect the design before burning.
         </p>
       </div>
@@ -94,7 +94,7 @@ export function CustomWoodSign() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
         {/* Controls - Left Panel */}
         <div className="lg:col-span-5 xl:col-span-4 order-2 lg:order-1">
-          <form onSubmit={handleSubmit} className="bg-white/50 backdrop-blur-md rounded-[32px] p-6 sm:p-8 soft-shadow border border-[#F5EDE8] space-y-8 relative overflow-hidden">
+          <form onSubmit={handleSubmit} className="bg-white/50 backdrop-blur-md rounded-[24px] sm:rounded-[32px] p-5 sm:p-6 md:p-8 soft-shadow border border-[#F5EDE8] space-y-6 sm:space-y-8 relative overflow-hidden">
             {isSubmitted && (
               <motion.div 
                 initial={{ opacity: 0 }} 
