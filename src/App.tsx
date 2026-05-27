@@ -104,6 +104,10 @@ export default function App() {
 
   const scrollToSection = (id: string) => {
     setActiveTab(id);
+    if (id === 'home') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
@@ -121,7 +125,7 @@ export default function App() {
       </div>
 
       {/* Navigation */}
-      <nav className="absolute top-0 w-full p-6 sm:p-6 flex flex-row justify-center sm:justify-between items-center z-50 max-w-7xl mx-auto left-0 right-0 gap-4 sm:gap-0">
+      <nav className="relative w-full p-6 flex flex-row justify-center sm:justify-between items-center z-50 max-w-7xl mx-auto gap-4 sm:gap-0">
         <motion.div 
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -142,6 +146,19 @@ export default function App() {
           <li className={`hover:text-brand-olive transition-colors cursor-pointer ${activeTab === 'contact' ? 'text-brand-olive' : ''}`} onClick={() => scrollToSection('contact')}>Contact</li>
         </motion.ul>
       </nav>
+
+      {/* Top Brand Banner Image (Positioned below the menu bar) */}
+      <div className="w-full relative h-[14vh] sm:h-[18vh] md:h-[22vh] min-h-[100px] sm:min-h-[140px] max-h-[240px] overflow-hidden bg-brand-cream flex justify-center items-center py-2">
+        <img 
+          src="https://lh3.googleusercontent.com/d/1AofX993p0B6j2LZceNH0Ml4pRE29YfzG" 
+          alt="Vettecraft Header Banner" 
+          className="max-w-[98%] md:max-w-[85%] h-full object-contain"
+          referrerPolicy="no-referrer"
+        />
+        {/* Sophisticated subtle gradient mapping for seamless integration */}
+        <div className="absolute inset-x-0 top-0 h-6 bg-gradient-to-b from-[#25211b]/5 to-transparent pointer-events-none"></div>
+        <div className="absolute inset-x-0 bottom-0 h-6 bg-gradient-to-t from-brand-cream to-transparent pointer-events-none"></div>
+      </div>
 
       {/* Modern fluid bottom navigation bar for mobile only */}
       <motion.div 
@@ -183,7 +200,7 @@ export default function App() {
       </motion.div>
 
       {/* Enhanced Hero Section (Bento Grid) */}
-      <section id="home" className="pt-32 sm:pt-40 md:pt-32 pb-12 sm:pb-16 px-4 sm:px-6 max-w-7xl mx-auto w-full relative z-10">
+      <section id="home" className="pt-8 sm:pt-12 md:pt-16 pb-12 sm:pb-16 px-4 sm:px-6 max-w-7xl mx-auto w-full relative z-10">
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(#E9DEC9_2px,transparent_2px)] [background-size:40px_40px] opacity-40 mix-blend-multiply"></div>
         {/* Floating Background Icons */}
         <motion.div animate={{ y: [0, -15, 0], rotate: [0, 5, 0] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} className="absolute -z-10 top-20 left-4 sm:left-10 text-brand-taupe opacity-30">
