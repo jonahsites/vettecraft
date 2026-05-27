@@ -49,10 +49,14 @@ const Card = ({ data, showCarousel = true, cardsPerView: defaultCardsPerView = 3
     setIsAnimating(true);
     const nextIndex = (currentIndex + 1) % data.length;
 
+    // The container has space for cardsPerView + 1 cards.
+    // Therefore, shifts are in units of 100 / (cardsPerView + 1)%
+    const stepPercent = 100 / (cardsPerView + 1);
+
     if (containerRef.current) {
       // Apply slide out animation
       containerRef.current.style.transition = "transform 500ms ease";
-      containerRef.current.style.transform = `translateX(-${cardWidth}%)`;
+      containerRef.current.style.transform = `translateX(-${stepPercent}%)`;
 
       // After animation completes, reset position and update index
       setTimeout(() => {
@@ -76,11 +80,12 @@ const Card = ({ data, showCarousel = true, cardsPerView: defaultCardsPerView = 3
 
     setIsAnimating(true);
     const prevIndex = (currentIndex - 1 + data.length) % data.length;
+    const stepPercent = 100 / (cardsPerView + 1);
 
     if (containerRef.current) {
       // First move instantly to the right position
       containerRef.current.style.transition = "none";
-      containerRef.current.style.transform = `translateX(-${cardWidth}%)`;
+      containerRef.current.style.transform = `translateX(-${stepPercent}%)`;
 
       // Update the index immediately
       setCurrentIndex(prevIndex);
