@@ -416,14 +416,30 @@ export default function App() {
               <p className="text-[9px] sm:text-[10px] uppercase tracking-widest text-brand-sage font-bold mb-3 sm:mb-4">Meet the Maker</p>
               <h2 className="text-4xl sm:text-5xl lg:text-7xl font-adren font-bold gold-gradient-text leading-tight">About Ivette</h2>
             </div>
-            <p className="text-sm text-brand-charcoal/80 font-medium leading-relaxed max-w-md lg:max-w-lg mx-auto lg:mx-0 px-4 sm:px-0">
-              Vettecraft By Ivette is born out of a love for cozy, charming spaces. 
-              Blending soft pastels, minimalistic structures, and a whole lot of heart, 
-              each piece is meticulously crafted in vibrant Miami, FL to bring a touch of sweet serenity to your life.
-            </p>
-            <p className="text-sm text-brand-taupe font-medium leading-relaxed max-w-md lg:max-w-lg mx-auto lg:mx-0 px-4 sm:px-0">
-              Whether you are looking for that perfect centerpiece to pull a room together, or a personalized charm to gift a loved one, Vettecraft is here to turn your home into a sanctuary.
-            </p>
+            <div className="text-xs sm:text-sm text-brand-charcoal/85 font-medium leading-relaxed max-w-md lg:max-w-xl mx-auto lg:mx-0 px-4 sm:px-0 space-y-4 text-left">
+              <p className="font-adren text-lg font-bold text-brand-charcoal">About VetteCraft</p>
+              <p>
+                My name is Ivette, and I have always felt a special connection to creativity and the beauty of handmade details.
+              </p>
+              <p>
+                The name VetteCraft was born from a story very close to my heart. Two of my nieces could not pronounce “Aunt Ivette” and lovingly began calling me “Aunt Vette.” From that affection and simple little moment, VetteCraft by Ivette was born.
+              </p>
+              <p>
+                My journey began in 2017, creating handmade wreaths made from yarn pom-poms. What started as a personal passion gradually grew into a space where creativity, dedication, and love for handmade artistry come to life.
+              </p>
+              <p>
+                Over time, VetteCraft evolved to include home decor, personalized gifts, and thoughtfully designed pieces created to celebrate meaningful moments and bring warmth and beauty into everyday spaces.
+              </p>
+              <p>
+                I deeply believe that memories hold immense value. Every message I incorporate into my pieces is created with the hope of touching someone’s heart — a family, a friend, or someone who simply needs a special detail or a small reminder of happiness.
+              </p>
+              <p>
+                More than creating products, my purpose is to create lasting memories that inspire emotion and celebrate the beauty and meaning found in life’s little details.
+              </p>
+              <p className="font-semibold text-brand-olive pt-2">
+                Welcome to VetteCraft by Ivette, where every piece is created with love, intention, and meaning.
+              </p>
+            </div>
             <div className="pt-2">
               <button className="px-8 py-4 bg-white text-brand-olive font-bold uppercase tracking-widest text-[10px] rounded-full border border-brand-beige hover:bg-brand-cream transition-colors soft-shadow">
                 Read Our Story
