@@ -2,23 +2,13 @@ import { motion } from 'motion/react';
 import { Gift, Home, MapPin, Heart, Sparkles, Star, Send, Mail, User, MessageSquare, ArrowRight, Cloud, Sun, Flower2, Coffee } from 'lucide-react';
 import { useState } from 'react';
 import { useScroll } from 'framer-motion';
-import { LinePath } from "./components/ui/svg-follow-scroll";
 import Card from "./components/ui/carousel-card";
 import { CustomWoodSign } from "./components/ui/custom-wood-sign";
 
 const SERVICES = [
   {
-    title: 'Home Decor',
-    description: 'Sweet, curated pieces to make every room in your house feel like home.',
-    icon: Home,
-    color: 'bg-brand-beige',
-    borderColor: 'border-brand-taupe/20',
-    textColor: 'text-brand-charcoal',
-    subTextColor: 'text-brand-taupe',
-  },
-  {
     title: 'Personalized Gifts',
-    description: 'Custom-made treasures bursting with love for your special someone.',
+    description: 'Custom-made treasures bursting with love, beautifully personalized with premium vinyl.',
     icon: Gift,
     color: 'bg-white',
     borderColor: 'border-brand-cream',
@@ -26,8 +16,26 @@ const SERVICES = [
     subTextColor: 'text-brand-taupe',
   },
   {
-    title: 'Custom Creations',
-    description: 'Have a dream design? Let’s bring your cozy visions to life together.',
+    title: 'Home Decor',
+    description: 'Curated and crafted pieces designed to bring warmth and character to every room of your home.',
+    icon: Home,
+    color: 'bg-brand-beige',
+    borderColor: 'border-brand-taupe/20',
+    textColor: 'text-brand-charcoal',
+    subTextColor: 'text-brand-taupe',
+  },
+  {
+    title: 'Seasonal Items',
+    description: 'Cozy additions and festive custom decorations designed to celebrate changing seasons.',
+    icon: Flower2,
+    color: 'bg-[#FDFBF7]',
+    borderColor: 'border-brand-beige',
+    textColor: 'text-brand-olive',
+    subTextColor: 'text-brand-taupe',
+  },
+  {
+    title: 'Custom Pieces',
+    description: 'Have a beautiful vision? Let’s bring your bespoke design ideas to life with loving care.',
     icon: Sparkles,
     color: 'bg-brand-sage',
     borderColor: 'border-brand-olive/20',
@@ -119,20 +127,16 @@ export default function App() {
   return (
     <div className="min-h-screen bg-brand-cream text-brand-charcoal font-sans selection:bg-brand-beige selection:text-brand-olive overflow-x-hidden relative">
       
-      {/* Global Scroll Path Component (Background Layer) */}
-      <div className="absolute inset-0 w-full h-full z-0 pointer-events-none opacity-20 mix-blend-multiply overflow-hidden touch-none">
-        <LinePath scrollYProgress={scrollYProgress} className="w-full h-full text-brand-taupe stroke-current" />
-      </div>
-
       {/* Navigation */}
       <nav className="relative w-full p-6 flex flex-row justify-center sm:justify-between items-center z-50 max-w-7xl mx-auto gap-4 sm:gap-0">
         <motion.div 
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-2xl sm:text-3xl font-adren font-bold tracking-widest uppercase gold-gradient-text cursor-pointer"
+          className="text-3xl sm:text-4xl font-adren font-bold tracking-widest uppercase gold-gradient-text cursor-pointer flex flex-col sm:flex-row sm:items-baseline gap-1"
           onClick={() => scrollToSection('home')}
         >
-          Vettecraft
+          <span>VetteCraft</span>
+          <span className="text-[10px] sm:text-xs font-sans font-semibold tracking-[0.25em] uppercase text-brand-olive select-none">by Ivette</span>
         </motion.div>
         <motion.ul 
           initial={{ opacity: 0, y: -20 }}
@@ -148,16 +152,16 @@ export default function App() {
       </nav>
 
       {/* Top Brand Banner Image (Positioned below the menu bar) */}
-      <div className="w-full relative h-[14vh] sm:h-[18vh] md:h-[22vh] min-h-[100px] sm:min-h-[140px] max-h-[240px] overflow-hidden bg-brand-cream flex justify-center items-center py-2">
+      <div className="w-full relative h-[16vh] sm:h-[22vh] md:h-[26vh] min-h-[120px] sm:min-h-[170px] max-h-[280px] overflow-hidden bg-brand-cream flex justify-center items-center py-2">
         <img 
           src="https://lh3.googleusercontent.com/d/1AofX993p0B6j2LZceNH0Ml4pRE29YfzG" 
           alt="Vettecraft Header Banner" 
-          className="max-w-[98%] md:max-w-[85%] h-full object-contain"
+          className="max-w-[100%] md:max-w-[92%] h-full object-contain"
           referrerPolicy="no-referrer"
         />
         {/* Sophisticated subtle gradient mapping for seamless integration */}
-        <div className="absolute inset-x-0 top-0 h-6 bg-gradient-to-b from-[#25211b]/5 to-transparent pointer-events-none"></div>
-        <div className="absolute inset-x-0 bottom-0 h-6 bg-gradient-to-t from-brand-cream to-transparent pointer-events-none"></div>
+        <div className="absolute inset-x-0 top-0 h-8 bg-gradient-to-b from-[#25211b]/5 to-transparent pointer-events-none"></div>
+        <div className="absolute inset-x-0 bottom-0 h-8 bg-gradient-to-t from-brand-cream to-transparent pointer-events-none"></div>
       </div>
 
       {/* Modern fluid bottom navigation bar for mobile only */}
@@ -289,24 +293,30 @@ export default function App() {
 
         {/* Small Bottom Features Row */}
         <div className="mt-8 flex flex-col sm:flex-row justify-between items-center gap-6 sm:gap-8 px-2 sm:px-4">
-          <div className="flex gap-4 sm:gap-6">
-             <div className="flex flex-col items-center gap-2 group cursor-pointer">
-               <div className="w-16 h-16 sm:w-20 sm:h-20 bg-brand-cream rounded-2xl sm:rounded-3xl flex items-center justify-center soft-shadow border border-brand-beige group-hover:-translate-y-1 transition-transform">
-                 <div className="w-6 h-6 sm:w-8 sm:h-8 border-[2px] border-brand-sage rounded-full"></div>
-               </div>
-               <span className="text-[8px] sm:text-[9px] uppercase tracking-widest text-brand-taupe font-bold">Vases</span>
-             </div>
-             <div className="flex flex-col items-center gap-2 group cursor-pointer">
-               <div className="w-16 h-16 sm:w-20 sm:h-20 bg-brand-beige rounded-2xl sm:rounded-3xl flex items-center justify-center soft-shadow border border-brand-taupe/20 group-hover:-translate-y-1 transition-transform">
-                 <div className="w-6 sm:w-8 h-[2px] sm:h-[3px] bg-brand-olive"></div>
-               </div>
-               <span className="text-[8px] sm:text-[9px] uppercase tracking-widest text-brand-taupe font-bold">Linens</span>
-             </div>
-             <div className="flex flex-col items-center gap-2 group cursor-pointer">
+          <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
+             <div className="flex flex-col items-center gap-2 group cursor-pointer" onClick={() => scrollToSection('shop')}>
                <div className="w-16 h-16 sm:w-20 sm:h-20 bg-white rounded-2xl sm:rounded-3xl flex items-center justify-center soft-shadow border border-brand-cream group-hover:-translate-y-1 transition-transform">
-                 <div className="w-6 h-6 sm:w-8 sm:h-8 bg-brand-sage/40 rounded-full"></div>
+                 <Gift className="w-6 h-6 text-brand-olive" strokeWidth={1.5} />
                </div>
-               <span className="text-[8px] sm:text-[9px] uppercase tracking-widest text-brand-taupe font-bold">Charms</span>
+               <span className="text-[8px] sm:text-[9px] uppercase tracking-widest text-brand-taupe font-bold">Gifts</span>
+             </div>
+             <div className="flex flex-col items-center gap-2 group cursor-pointer" onClick={() => scrollToSection('shop')}>
+               <div className="w-16 h-16 sm:w-20 sm:h-20 bg-brand-cream rounded-2xl sm:rounded-3xl flex items-center justify-center soft-shadow border border-brand-beige group-hover:-translate-y-1 transition-transform">
+                 <Home className="w-6 h-6 text-brand-charcoal" strokeWidth={1.5} />
+               </div>
+               <span className="text-[8px] sm:text-[9px] uppercase tracking-widest text-brand-taupe font-bold">Decor</span>
+             </div>
+             <div className="flex flex-col items-center gap-2 group cursor-pointer" onClick={() => scrollToSection('shop')}>
+               <div className="w-16 h-16 sm:w-20 sm:h-20 bg-brand-beige rounded-2xl sm:rounded-3xl flex items-center justify-center soft-shadow border border-brand-taupe/20 group-hover:-translate-y-1 transition-transform">
+                 <Flower2 className="w-6 h-6 text-brand-olive" strokeWidth={1.5} />
+               </div>
+               <span className="text-[8px] sm:text-[9px] uppercase tracking-widest text-brand-taupe font-bold">Seasonal</span>
+             </div>
+             <div className="flex flex-col items-center gap-2 group cursor-pointer" onClick={() => scrollToSection('shop')}>
+               <div className="w-16 h-16 sm:w-20 sm:h-20 bg-brand-sage rounded-2xl sm:rounded-3xl flex items-center justify-center soft-shadow border border-brand-olive/20 group-hover:-translate-y-1 transition-transform">
+                 <Sparkles className="w-6 h-6 text-white" strokeWidth={1.5} />
+               </div>
+               <span className="text-[8px] sm:text-[9px] uppercase tracking-widest text-brand-taupe font-bold">Custom</span>
              </div>
           </div>
           
@@ -338,7 +348,7 @@ export default function App() {
             <p className="text-brand-taupe font-bold text-[9px] sm:text-[10px] uppercase tracking-widest mt-2 px-4">Delicate details for your everyday spaces</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {SERVICES.map((service, index) => {
               const Icon = service.icon;
               return (
@@ -430,11 +440,10 @@ export default function App() {
             className="flex-1 space-y-6 sm:space-y-8 text-center lg:text-left"
           >
             <div>
-              <p className="text-[9px] sm:text-[10px] uppercase tracking-widest text-brand-sage font-bold mb-3 sm:mb-4">Meet the Maker</p>
-              <h2 className="text-4xl sm:text-5xl lg:text-7xl font-adren font-bold gold-gradient-text leading-tight">About Ivette</h2>
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-adren font-bold gold-gradient-text leading-tight">About VetteCraft by Ivette</h2>
+              <p className="text-brand-taupe font-bold text-[9px] sm:text-[10px] uppercase tracking-widest mt-2 sm:mt-3">The story behind our creations</p>
             </div>
-            <div className="text-xs sm:text-sm text-brand-charcoal/85 font-medium leading-relaxed max-w-md lg:max-w-xl mx-auto lg:mx-0 px-4 sm:px-0 space-y-4 text-left">
-              <p className="font-adren text-lg font-bold text-brand-charcoal">About VetteCraft</p>
+            <div className="text-xs sm:text-sm text-brand-charcoal/85 font-medium leading-relaxed max-w-md lg:max-w-xl mx-auto lg:mx-0 px-4 sm:px-0 space-y-4 text-left pt-2">
               <p>
                 My name is Ivette, and I have always felt a special connection to creativity and the beauty of handmade details.
               </p>
@@ -512,7 +521,7 @@ export default function App() {
                 <MessageSquare size={16} className="sm:w-[18px] sm:h-[18px]" strokeWidth={1.5} />
               </div>
               <textarea 
-                placeholder="How can we help make your space cozier?" 
+                placeholder="Tell us about the custom pieces or personalized gifts you would like us to create for you..." 
                 rows={4}
                 className="w-full bg-white rounded-[24px] sm:rounded-[32px] py-4 pl-12 sm:pl-14 pr-6 text-sm text-brand-charcoal font-medium placeholder-brand-taupe/60 focus:outline-none focus:ring-2 focus:ring-brand-olive border border-transparent transition-all shadow-sm resize-none"
               ></textarea>

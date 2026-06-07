@@ -87,7 +87,7 @@ export function CustomWoodSign() {
       <div className="text-center mb-8 sm:mb-12">
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-adren font-bold gold-gradient-text mb-3 sm:mb-4">Request a Custom Piece</h2>
         <p className="text-xs sm:text-sm font-medium text-brand-taupe max-w-2xl mx-auto leading-relaxed px-2 sm:px-0">
-          Design your perfect wood burned sign. Preview your image and text below, then submit your request. Our artists will manually refine your image, remove backgrounds, and perfect the design before burning.
+          Create your personalized visual draft below. Preview your custom message and design idea, then submit your request. Ivette will review your custom vinyl details and coordinate with you to craft the perfect custom keepsake.
         </p>
       </div>
 
@@ -116,30 +116,9 @@ export function CustomWoodSign() {
                 <h3 className="font-bold text-brand-charcoal text-lg">Design Details</h3>
               </div>
 
-              {/* Shape Selection */}
-              <div>
-                <label className="text-xs font-bold uppercase tracking-widest text-brand-taupe mb-3 block">Canvas Shape</label>
-                <div className="grid grid-cols-2 gap-2">
-                  {SHAPES.map((s) => (
-                    <button
-                      key={s.id}
-                      type="button"
-                      onClick={() => setSelectedShape(s)}
-                      className={`py-3 px-2 rounded-[16px] text-xs font-bold transition-all border ${
-                        selectedShape.id === s.id 
-                          ? "bg-white text-brand-charcoal border-white soft-shadow scale-[1.02]" 
-                          : "bg-transparent text-brand-taupe border-brand-cream hover:bg-white/50"
-                      }`}
-                    >
-                      {s.name}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
               {/* Image Upload */}
               <div>
-                <label className="text-xs font-bold uppercase tracking-widest text-brand-taupe mb-3 block">Main Subject</label>
+                <label className="text-xs font-bold uppercase tracking-widest text-brand-taupe mb-3 block">Design or Inspiration Image</label>
                 <input 
                   type="file"
                   accept="image/*"
@@ -155,7 +134,7 @@ export function CustomWoodSign() {
                   <div className="w-10 h-10 rounded-full bg-brand-cream flex items-center justify-center text-brand-taupe">
                     {image ? <ImageIcon size={18} /> : <Upload size={18} />}
                   </div>
-                  <span>{image ? "Change Image" : "Click to Upload Image"}</span>
+                  <span>{image ? "Change Image" : "Click to Upload Inspiration Image"}</span>
                 </button>
                 {image && (
                   <div className="mt-4 px-2">
@@ -174,33 +153,9 @@ export function CustomWoodSign() {
                 )}
               </div>
 
-              {/* Remove Background Toggle */}
-              <div className="flex items-center justify-between p-4 bg-white/40 rounded-[16px] border border-white/50">
-                <div className="flex items-center gap-3">
-                  <div className="p-2 bg-brand-cream rounded-full text-brand-charcoal">
-                    <Eraser size={16} />
-                  </div>
-                  <div>
-                    <h4 className="text-sm font-bold text-brand-charcoal">Remove Background</h4>
-                    <p className="text-[10px] text-brand-taupe uppercase tracking-wide mt-0.5">Auto-detects contrast</p>
-                  </div>
-                </div>
-                <button 
-                  type="button"
-                  onClick={() => setRemoveBg(!removeBg)}
-                  className={`w-12 h-6 rounded-full p-1 transition-colors relative flex items-center ${removeBg ? "bg-brand-sage" : "bg-brand-beige"}`}
-                >
-                  <motion.div 
-                    initial={false}
-                    animate={{ x: removeBg ? 24 : 0 }}
-                    className="w-4 h-4 rounded-full bg-white shadow-sm"
-                  />
-                </button>
-              </div>
-
               {/* Text Input */}
               <div>
-                <label className="text-xs font-bold uppercase tracking-widest text-brand-taupe mb-3 block">Engraving Text</label>
+                <label className="text-xs font-bold uppercase tracking-widest text-brand-taupe mb-3 block">Personalized Message</label>
                 <textarea
                   value={text}
                   onChange={(e) => setText(e.target.value)}
