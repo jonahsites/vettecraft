@@ -2,11 +2,12 @@ import { useState, useRef, FormEvent, ChangeEvent } from "react";
 import { motion } from "motion/react";
 import { Upload, Type, Eraser, Check, Mail, Send, Image as ImageIcon, Sparkles, Move } from "lucide-react";
 
-const SHAPES = [
-  { id: "rectangle", name: "Rectangle", class: "aspect-square md:aspect-[4/3] rounded-[32px]" },
-  { id: "square", name: "Square", class: "aspect-square rounded-[32px]" },
-  { id: "round", name: "Round", class: "aspect-square rounded-full" },
-  { id: "arch", name: "Arch", class: "aspect-[3/4] md:aspect-[2/3] rounded-t-full rounded-b-[32px]" }
+const PRODUCT_CATEGORIES = [
+  { id: "signs", name: "Custom Sign & Wood Plaque", description: "Beautiful hand-painted signs with custom lettering." },
+  { id: "drinkware", name: "Custom Drinkware & Mug", description: "Elegant cups with scratch-resistant premium vinyl." },
+  { id: "seasonal", name: "Seasonal / Ornaments", description: "Festive shapes and tags designed for changing seasons." },
+  { id: "giftbox", name: "Custom Keepsake Box", description: "Lidded memory boxes personalized with names or messages." },
+  { id: "other", name: "Bespoke / Custom Pieces", description: "Any other special custom item of your imagination!" }
 ];
 
 const FONTS = [
@@ -22,10 +23,9 @@ export function CustomWoodSign() {
   const [text, setText] = useState<string>("");
   const [imgScale, setImgScale] = useState(1);
   const [textScale, setTextScale] = useState(1);
-  const [removeBg, setRemoveBg] = useState(false);
   const [email, setEmail] = useState("");
   const [details, setDetails] = useState("");
-  const [selectedShape, setSelectedShape] = useState(SHAPES[0]);
+  const [selectedCategory, setSelectedCategory] = useState(PRODUCT_CATEGORIES[0]);
   const [selectedFont, setSelectedFont] = useState(FONTS[0]);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -67,7 +67,7 @@ export function CustomWoodSign() {
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSubmitted(true);
-      // Reset form after 3 seconds
+      // Reset form after 5 seconds
       setTimeout(() => {
         setIsSubmitted(false);
         setImage(null);
@@ -77,7 +77,7 @@ export function CustomWoodSign() {
         setTextScale(1);
         setEmail("");
         setDetails("");
-        setRemoveBg(false);
+        setSelectedCategory(PRODUCT_CATEGORIES[0]);
       }, 5000);
     }, 1500);
   };
@@ -113,12 +113,34 @@ export function CustomWoodSign() {
             <div className="space-y-6">
               <div className="flex items-center gap-3 border-b border-brand-beige pb-4">
                 <span className="w-8 h-8 rounded-full bg-brand-beige text-brand-charcoal font-bold flex items-center justify-center text-sm">1</span>
-                <h3 className="font-bold text-brand-charcoal text-lg">Design Details</h3>
+                <h3 className="font-bold text-brand-charcoal text-lg">Product Selection</h3>
+              </div>
+
+              {/* Product Category Selection */}
+              <div>
+                <label className="text-xs font-bold uppercase tracking-widest text-brand-taupe mb-3 block">Choose a Product Base</label>
+                <div className="grid grid-cols-1 gap-2">
+                  {PRODUCT_CATEGORIES.map((cat) => (
+                    <button
+                      key={cat.id}
+                      type="button"
+                      onClick={() => setSelectedCategory(cat)}
+                      className={`p-3.5 px-4 rounded-[20px] text-xs font-bold transition-all border text-left flex flex-col ${
+                        selectedCategory.id === cat.id 
+                          ? "bg-white text-brand-charcoal border-brand-olive scale-[1.01] shadow-sm" 
+                          : "bg-white/40 text-brand-taupe border-brand-cream/60 hover:bg-white/80"
+                      }`}
+                    >
+                      <span className="font-bold text-[12px] text-brand-charcoal">{cat.name}</span>
+                      <span className="text-[10px] opacity-75 font-medium normal-case mt-0.5 text-brand-taupe">{cat.description}</span>
+                    </button>
+                  ))}
+                </div>
               </div>
 
               {/* Image Upload */}
               <div>
-                <label className="text-xs font-bold uppercase tracking-widest text-brand-taupe mb-3 block">Design or Inspiration Image</label>
+                <label className="text-xs font-bold uppercase tracking-widest text-brand-taupe mb-3 block mt-2">Design or Inspiration Image</label>
                 <input 
                   type="file"
                   accept="image/*"
@@ -253,130 +275,121 @@ export function CustomWoodSign() {
         </div>
 
         {/* Preview Area - Right Panel */}
-        <div className="lg:col-span-7 xl:col-span-8 order-1 lg:order-2 flex flex-col items-center justify-center h-full">
+        <div className="lg:col-span-7 xl:col-span-8 order-1 lg:order-2 flex flex-col items-center justify-center h-full w-full">
           {(image || text) && (
-            <div className="mb-4 text-brand-taupe text-xs font-bold tracking-widest uppercase flex items-center gap-2">
-              <Move size={14} /> You can drag elements to position
+            <div className="mb-4 text-brand-taupe text-[10px] sm:text-xs font-bold tracking-widest uppercase flex items-center gap-2">
+              <Move size={14} className="text-brand-sage animate-pulse" /> Drag elements inside the active boards to plan your layout
             </div>
           )}
-          {/* Filter definitions */}
-          <svg width="0" height="0" className="hidden">
-            <filter id="woodMonochrome">
-              {/* Convert to grayscale based on luminance */}
-              <feColorMatrix 
-                type="matrix" 
-                values="0.2126 0.7152 0.0722 0 0
-                        0.2126 0.7152 0.0722 0 0
-                        0.2126 0.7152 0.0722 0 0
-                        0      0      0      1 0" 
-              />
-              {/* Map grayscale values to a gradient of wood tones */}
-              <feComponentTransfer>
-                <feFuncR type="table" tableValues="0.12 0.30 0.50 0.75 0.98" />
-                <feFuncG type="table" tableValues="0.06 0.18 0.35 0.60 0.95" />
-                <feFuncB type="table" tableValues="0.02 0.09 0.20 0.40 0.90" />
-              </feComponentTransfer>
-            </filter>
-            
-            <filter id="removeBgContrast">
-              <feComponentTransfer>
-                <feFuncR type="linear" slope="1.5" intercept="-0.1" />
-                <feFuncG type="linear" slope="1.5" intercept="-0.1" />
-                <feFuncB type="linear" slope="1.5" intercept="-0.1" />
-              </feComponentTransfer>
-            </filter>
-          </svg>
 
-          {/* Canvas Viewport */}
-          <div className="relative w-full max-w-2xl mx-auto flex items-center justify-center p-4">
+          {/* Neutral Workspace Canvas */}
+          <div className="relative w-full max-w-2xl mx-auto flex items-center justify-center p-2 sm:p-4">
             <motion.div 
               ref={canvasRef}
               layout
-              className={`relative w-full ${selectedShape.class} overflow-hidden soft-shadow bg-[#D8CFC4] transition-all duration-500 touch-none`}
+              className="relative w-full aspect-square sm:aspect-[4/3] rounded-[32px] overflow-hidden soft-shadow bg-[#FAF8F5] border border-brand-beige transition-all duration-500 touch-none flex flex-col justify-between p-6 sm:p-10 select-none"
             >
-              {/* Base Wood Texture */}
-              <div 
-                className="absolute inset-0 z-0 bg-cover bg-center pointer-events-none"
-                style={{ 
-                  backgroundImage: "url('https://images.squarespace-cdn.com/content/v1/5829ff9f893fc0eadc780393/1596758011956-4DO8EMMSM7AOPMHYTZC2/Woden+Panels.png?format=2500w')"
-                }}
-              />
-
-              {/* Overlaid Content */}
-              <div className="absolute inset-0 z-10 flex flex-col items-center justify-center p-8 text-center sm:p-12 overflow-hidden pointer-events-none">
-                {/* The Image layer */}
-                {image && (
-                  <motion.img 
-                    drag
-                    dragConstraints={canvasRef}
-                    dragElastic={0.1}
-                    dragMomentum={false}
-                    src={image}
-                    alt="Custom upload"
-                    className="w-[75%] max-w-md object-contain mix-blend-multiply cursor-grab active:cursor-grabbing pointer-events-auto"
-                    style={{
-                      scale: imgScale,
-                      opacity: removeBg ? 0.95 : 0.85,
-                      filter: removeBg 
-                        ? (bgIsDark ? "invert(1) url(#removeBgContrast) url(#woodMonochrome)" : "url(#removeBgContrast) url(#woodMonochrome)") 
-                        : "url(#woodMonochrome)",
-                      maxHeight: text ? "55%" : "80%"
-                    }}
-                  />
-                )}
-
-                {/* Text on Top */}
-                {text && (
-                  <motion.h3 
-                    drag
-                    dragConstraints={canvasRef}
-                    dragElastic={0.1}
-                    dragMomentum={false}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className={`${selectedFont.class} ${
-                      selectedFont.id === 'font-script' ? 'text-5xl md:text-7xl font-bold' : 
-                      selectedFont.id === 'font-serif' ? 'text-3xl md:text-5xl font-medium' : 
-                      selectedFont.id === 'font-mono' ? 'text-2xl md:text-4xl font-normal uppercase tracking-widest' :
-                      'text-3xl md:text-5xl font-semibold tracking-tight'
-                    } text-[#1A1111] drop-shadow-sm whitespace-pre-wrap mix-blend-multiply opacity-90 max-w-full break-words relative z-20 mt-6 md:mt-8 cursor-grab active:cursor-grabbing pointer-events-auto`}
-                    style={{ scale: textScale }}
-                  >
-                    {text}
-                  </motion.h3>
-                )}
+              <div className="absolute inset-0 -z-10 bg-[radial-gradient(#E9DEC9_1.5px,transparent_1.5px)] [background-size:24px_24px] opacity-40"></div>
+              
+              {/* Header inside mockup */}
+              <div className="flex justify-between items-center border-b border-brand-beige/50 pb-3 w-full z-10">
+                <div className="flex items-center gap-2">
+                  <div className="w-2.5 h-2.5 bg-brand-sage rounded-full"></div>
+                  <span className="text-[10px] uppercase font-bold text-brand-taupe tracking-wider">Design Proof Workspace</span>
+                </div>
+                <span className="text-[9px] uppercase font-bold text-brand-olive bg-white px-3 py-1 rounded-full border border-brand-cream shadow-sm">
+                  {selectedCategory.name}
+                </span>
               </div>
 
-              {/* Top texture layers for wood grain overlay */}
-              <div 
-                className="absolute inset-0 z-20 pointer-events-none mix-blend-multiply bg-cover bg-center opacity-30"
-                style={{ 
-                  backgroundImage: "url('https://images.squarespace-cdn.com/content/v1/5829ff9f893fc0eadc780393/1596758011956-4DO8EMMSM7AOPMHYTZC2/Woden+Panels.png?format=2500w')"
-                }}
-              />
-              <div 
-                className="absolute inset-0 z-20 pointer-events-none mix-blend-screen bg-cover bg-center opacity-[0.35]"
-                style={{ 
-                  backgroundImage: "url('https://images.squarespace-cdn.com/content/v1/5829ff9f893fc0eadc780393/1596758011956-4DO8EMMSM7AOPMHYTZC2/Woden+Panels.png?format=2500w')"
-                }}
-              />
+              {/* Dynamic Workspace Content */}
+              <div className="flex-1 flex flex-col sm:flex-row items-center justify-center gap-6 py-4 w-full relative">
+                
+                {/* 1. If we have custom text, show it in a polished personalized item card */}
+                {(text || image) ? (
+                  <div className="w-full h-full flex flex-col justify-center items-center relative gap-6">
+                    
+                    {/* The typography design box */}
+                    <div className="w-full bg-white rounded-3xl p-6 sm:p-8 border border-brand-beige/40 shadow-sm flex flex-col justify-center items-center min-h-[140px] md:min-h-[180px] max-w-lg transition-transform duration-300 relative overflow-hidden">
+                      <div className="absolute top-2.5 left-4 text-[8px] uppercase tracking-wider font-bold text-brand-taupe">Custom Vinyl Text</div>
+                      <div className="absolute top-2.5 right-4 text-[8px] uppercase tracking-wider font-semibold text-brand-olive flex items-center gap-1">
+                        <Sparkles size={8} /> {selectedFont.name}
+                      </div>
 
-              {/* Placeholder Empty State */}
-              {!image && !text && (
-                <div className="absolute inset-0 z-30 flex flex-col items-center justify-center pointer-events-none gap-4">
-                  <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/40">
-                    <Sparkles size={24} className="text-[#3B2C2C]/50" />
+                      <div className="w-full text-center mt-2">
+                        {text ? (
+                          <motion.p 
+                            drag
+                            dragConstraints={canvasRef}
+                            dragElastic={0.1}
+                            dragMomentum={false}
+                            style={{ scale: textScale }}
+                            className={`${selectedFont.class} text-[#2E2824] leading-relaxed drop-shadow-sm whitespace-pre-wrap break-words inline-block max-w-full cursor-grab active:cursor-grabbing pointer-events-auto select-none ${
+                              selectedFont.id === 'font-script' ? 'text-3xl sm:text-4xl md:text-5xl font-bold' : 
+                              selectedFont.id === 'font-serif' ? 'text-xl sm:text-2xl md:text-3xl font-medium' : 
+                              selectedFont.id === 'font-mono' ? 'text-base sm:text-lg md:text-xl font-mono' :
+                              'text-xl sm:text-2xl font-bold'
+                            }`}
+                          >
+                            {text}
+                          </motion.p>
+                        ) : (
+                          <p className="text-xs text-brand-taupe/70 italic font-medium">
+                            Add a personalized message or names inside the creator form on the left...
+                          </p>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* The inspiration visual attachment box */}
+                    {image && (
+                      <motion.div 
+                        drag
+                        dragConstraints={canvasRef}
+                        dragElastic={0.1}
+                        dragMomentum={false}
+                        initial={{ opacity: 0, scale: 0.9, rotate: -2 }}
+                        animate={{ opacity: 1, scale: 1, rotate: -3 }}
+                        className="bg-white p-3 pb-5 rounded-2xl shadow-md border border-brand-beige/45 max-w-[150px] sm:max-w-[170px] cursor-grab active:cursor-grabbing pointer-events-auto absolute bottom-2 right-2 sm:right-6 sm:bottom-4 z-20 hover:scale-105 transition-all"
+                        style={{ scale: imgScale }}
+                      >
+                        {/* Polaroid tape detail */}
+                        <div className="absolute -top-3.5 left-1/2 -xl -translate-x-1/2 w-14 h-4 bg-[#f1ebd9]/90 border border-brand-beige/50 backdrop-blur-sm -rotate-3 rounded-sm opacity-80 pointer-events-none"></div>
+                        <div className="aspect-square w-full overflow-hidden rounded-lg bg-brand-cream/40 mb-2 pointer-events-none">
+                          <img src={image} alt="Inspiration source" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                        </div>
+                        <p className="text-[8px] uppercase tracking-widest text-brand-taupe font-bold text-center pointer-events-none">Design Source</p>
+                      </motion.div>
+                    )}
+
                   </div>
-                  <span className="text-[#3B2C2C]/50 font-bold uppercase tracking-widest text-sm bg-white/20 backdrop-blur-md px-6 py-2 rounded-full border border-white/40 shadow-sm">
-                    {selectedShape.name} Canvas Preview
-                  </span>
-                </div>
-              )}
+                ) : (
+                  /* Workspace Empty state instruction */
+                  <div className="flex flex-col items-center justify-center text-center p-8 gap-4 pointer-events-none">
+                    <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center border border-brand-beige [box-shadow:0_4px_20px_rgba(167,178,154,0.1)]">
+                      <Sparkles size={24} className="text-brand-sage animate-pulse" />
+                    </div>
+                    <div className="space-y-1">
+                      <h4 className="font-adren text-lg font-bold text-brand-charcoal">Design Proof Planner</h4>
+                      <p className="text-xs text-brand-taupe max-w-sm font-medium leading-relaxed">
+                        Customize your typography, type a message, or drop an inspiration image. Click “Submit Request” below and Ivette will handcraft your design.
+                      </p>
+                    </div>
+                  </div>
+                )}
+
+              </div>
+
+              {/* Footer signature line inside workspace */}
+              <div className="flex justify-between items-center border-t border-brand-beige/40 pt-3 text-[8px] uppercase tracking-widest text-brand-taupe font-bold w-full z-10 select-none">
+                <span>VetteCraft by Ivette Handcrafted Creations</span>
+                <span>South Florida</span>
+              </div>
             </motion.div>
           </div>
 
-          <p className="text-center mt-6 text-xs uppercase font-bold text-brand-taupe tracking-wider max-w-md">
-            *This is a digital preview. Final physical product may vary slightly in texture, color, and contrast.
+          <p className="text-center mt-6 text-xs font-semibold text-brand-taupe tracking-wider max-w-md px-4 leading-relaxed">
+            *This planner is a modern design template. Ivette reviews every detail closely and will send you a final proof configuration before beginning personalization.
           </p>
         </div>
       </div>

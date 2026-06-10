@@ -132,11 +132,11 @@ export default function App() {
         <motion.div 
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-3xl sm:text-4xl font-adren font-bold tracking-widest uppercase gold-gradient-text cursor-pointer flex flex-col sm:flex-row sm:items-baseline gap-1"
+          className="text-4xl sm:text-5xl font-adren font-bold tracking-[0.05em] sm:tracking-widest uppercase gold-gradient-text cursor-pointer flex flex-col sm:flex-row sm:items-baseline gap-1.5"
           onClick={() => scrollToSection('home')}
         >
           <span>VetteCraft</span>
-          <span className="text-[10px] sm:text-xs font-sans font-semibold tracking-[0.25em] uppercase text-brand-olive select-none">by Ivette</span>
+          <span className="text-xs sm:text-sm font-sans font-semibold tracking-[0.25em] uppercase text-brand-olive select-none">by Ivette</span>
         </motion.div>
         <motion.ul 
           initial={{ opacity: 0, y: -20 }}
@@ -152,16 +152,16 @@ export default function App() {
       </nav>
 
       {/* Top Brand Banner Image (Positioned below the menu bar) */}
-      <div className="w-full relative h-[16vh] sm:h-[22vh] md:h-[26vh] min-h-[120px] sm:min-h-[170px] max-h-[280px] overflow-hidden bg-brand-cream flex justify-center items-center py-2">
+      <div className="w-full relative h-[20vh] sm:h-[26vh] md:h-[30vh] min-h-[150px] sm:min-h-[200px] max-h-[350px] overflow-hidden bg-brand-cream flex justify-center items-center py-4">
         <img 
           src="https://lh3.googleusercontent.com/d/1AofX993p0B6j2LZceNH0Ml4pRE29YfzG" 
           alt="Vettecraft Header Banner" 
-          className="max-w-[100%] md:max-w-[92%] h-full object-contain"
+          className="max-w-[100%] md:max-w-[96%] h-full object-contain transition-transform duration-500 hover:scale-[1.01]"
           referrerPolicy="no-referrer"
         />
         {/* Sophisticated subtle gradient mapping for seamless integration */}
-        <div className="absolute inset-x-0 top-0 h-8 bg-gradient-to-b from-[#25211b]/5 to-transparent pointer-events-none"></div>
-        <div className="absolute inset-x-0 bottom-0 h-8 bg-gradient-to-t from-brand-cream to-transparent pointer-events-none"></div>
+        <div className="absolute inset-x-0 top-0 h-10 bg-gradient-to-b from-[#25211b]/5 to-transparent pointer-events-none"></div>
+        <div className="absolute inset-x-0 bottom-0 h-10 bg-gradient-to-t from-brand-cream to-transparent pointer-events-none"></div>
       </div>
 
       {/* Modern fluid bottom navigation bar for mobile only */}
@@ -228,15 +228,15 @@ export default function App() {
             <div className="z-10 bg-white/40 absolute -right-32 -bottom-32 w-80 sm:w-96 h-80 sm:h-96 rounded-full blur-3xl pointer-events-none"></div>
             
             <div className="z-10 relative mt-2 sm:mt-0">
-              <span className="inline-block px-4 py-1.5 bg-white rounded-full text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-brand-olive mb-4 sm:mb-8 shadow-sm border border-white soft-shadow">
+              <span className="inline-block px-4 py-1.5 bg-white rounded-full text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-brand-olive mb-4 sm:mb-6 shadow-sm border border-white soft-shadow">
                 New Collection
               </span>
-              <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold font-adren text-brand-charcoal leading-[1.1] mb-4 sm:mb-6">
-                Cozy Home <br/>
-                <span className="font-adren font-normal">Essentials</span>
+              <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-adren text-brand-charcoal leading-[1.15] mb-4 sm:mb-6">
+                Personalized Gifts <br className="hidden sm:inline"/>
+                <span className="font-adren font-normal">&amp; Home Decor</span>
               </h1>
-              <p className="text-xs sm:text-sm text-brand-charcoal/80 max-w-sm mb-4 sm:mb-8 leading-relaxed font-medium">
-                Discover pieces crafted with love in South Florida, blending modern minimalism with charming details perfectly suited for your everyday life.
+              <p className="text-xs sm:text-sm text-brand-charcoal/85 max-w-xl mb-4 sm:mb-8 leading-relaxed font-medium">
+                Discover pieces handcrafted with love and care in South Florida, custom-tailored with premium vinyl detailing to make every room, gift, and moment truly yours.
               </p>
             </div>
 
@@ -245,18 +245,8 @@ export default function App() {
                 onClick={() => scrollToSection('shop')}
                 className="w-full sm:w-auto px-8 py-4 bg-brand-sage text-white rounded-full text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-brand-olive transition-all shadow-lg hover:shadow-xl hover:-translate-y-1 active:scale-95"
               >
-                Explore Decor
+                Explore Offerings
               </button>
-            </div>
-
-            {/* Overlapping aesthetic image on the right inside card */}
-            <div className="absolute right-0 top-0 bottom-0 w-1/3 hidden md:block overflow-hidden rounded-l-[48px]">
-              <div className="absolute inset-0 bg-gradient-to-r from-brand-beige to-transparent z-10 w-24"></div>
-              <img 
-                src="https://lh3.googleusercontent.com/d/1HUzCoWHBEII4gFy9XlsX_nR2nI6Us0O5" 
-                alt="Cozy aesthetic" 
-                className="w-full h-full object-cover opacity-[0.8] mix-blend-multiply"
-              />
             </div>
           </motion.div>
 
@@ -386,7 +376,7 @@ export default function App() {
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="flex flex-col sm:flex-row justify-between items-center sm:items-end mb-10 sm:mb-16 gap-6 text-center sm:text-left">
             <div>
-              <h2 className="text-4xl sm:text-5xl font-adren font-bold gold-gradient-text">Charm Gallery</h2>
+              <h2 className="text-4xl sm:text-5xl font-adren font-bold gold-gradient-text">Featured Creations</h2>
               <p className="text-brand-taupe font-bold text-[9px] sm:text-[10px] uppercase tracking-widest mt-3 sm:mt-4">A peek into our recent creations</p>
             </div>
             <button className="flex items-center justify-center gap-2 text-brand-olive text-[10px] uppercase tracking-widest font-bold hover:gap-4 transition-all pb-2 sm:pb-0">
