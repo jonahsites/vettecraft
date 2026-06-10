@@ -132,11 +132,11 @@ export default function App() {
         <motion.div 
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-4xl sm:text-5xl font-adren font-bold tracking-[0.05em] sm:tracking-widest uppercase gold-gradient-text cursor-pointer flex flex-col sm:flex-row sm:items-baseline gap-1.5"
+          className="text-xl sm:text-2xl font-adren font-bold tracking-[0.05em] sm:tracking-widest uppercase gold-gradient-text cursor-pointer flex flex-col sm:flex-row sm:items-baseline gap-1"
           onClick={() => scrollToSection('home')}
         >
           <span>VetteCraft</span>
-          <span className="text-xs sm:text-sm font-sans font-semibold tracking-[0.25em] uppercase text-brand-olive select-none">by Ivette</span>
+          <span className="text-[9px] sm:text-[10px] font-sans font-bold tracking-[0.2em] uppercase text-brand-olive select-none">by Ivette</span>
         </motion.div>
         <motion.ul 
           initial={{ opacity: 0, y: -20 }}
@@ -152,16 +152,16 @@ export default function App() {
       </nav>
 
       {/* Top Brand Banner Image (Positioned below the menu bar) */}
-      <div className="w-full relative h-[20vh] sm:h-[26vh] md:h-[30vh] min-h-[150px] sm:min-h-[200px] max-h-[350px] overflow-hidden bg-brand-cream flex justify-center items-center py-4">
+      <div className="w-full relative h-[28vh] sm:h-[36vh] md:h-[45vh] min-h-[220px] sm:min-h-[320px] md:min-h-[400px] max-h-[500px] overflow-hidden bg-brand-cream flex justify-center items-center py-6 sm:py-8">
         <img 
           src="https://lh3.googleusercontent.com/d/1AofX993p0B6j2LZceNH0Ml4pRE29YfzG" 
           alt="Vettecraft Header Banner" 
-          className="max-w-[100%] md:max-w-[96%] h-full object-contain transition-transform duration-500 hover:scale-[1.01]"
+          className="max-w-[100%] md:max-w-[98%] h-full object-contain scale-105 sm:scale-110 transition-transform duration-500 hover:scale-115"
           referrerPolicy="no-referrer"
         />
         {/* Sophisticated subtle gradient mapping for seamless integration */}
-        <div className="absolute inset-x-0 top-0 h-10 bg-gradient-to-b from-[#25211b]/5 to-transparent pointer-events-none"></div>
-        <div className="absolute inset-x-0 bottom-0 h-10 bg-gradient-to-t from-brand-cream to-transparent pointer-events-none"></div>
+        <div className="absolute inset-x-0 top-0 h-12 bg-gradient-to-b from-[#25211b]/5 to-transparent pointer-events-none"></div>
+        <div className="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-brand-cream to-transparent pointer-events-none"></div>
       </div>
 
       {/* Modern fluid bottom navigation bar for mobile only */}
