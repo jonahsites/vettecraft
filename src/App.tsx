@@ -104,6 +104,91 @@ const PORTFOLIO_DATA = [
     id: 12,
     imgUrl: "https://lh3.googleusercontent.com/d/1yla8N9FRXsP-Lbvi2bqwl4gmfOKuBxe8",
     content: "Where comfort meets style. A curated aesthetic for the modern soul."
+  },
+  {
+    id: 13,
+    imgUrl: "https://lh3.googleusercontent.com/d/102J1M6C1g6xLTzd8JGWv-QUOUJrvcm9X",
+    content: "Bespoke customized drinkware with name decals, blending daily functionality with premium styling."
+  },
+  {
+    id: 14,
+    imgUrl: "https://lh3.googleusercontent.com/d/11i565G39OSqMLeTcXAw6udc-w5BltF8g",
+    content: "Personalized family wood sign, crafted with clean lines and rustic warmth to match any cozy room."
+  },
+  {
+    id: 15,
+    imgUrl: "https://lh3.googleusercontent.com/d/1BPWVWPrOZEfIrCwglveub32KFbtmCByx",
+    content: "Custom-crafted seasonal tags and holiday ornaments, meticulously finished to highlight your family milestones."
+  },
+  {
+    id: 16,
+    imgUrl: "https://lh3.googleusercontent.com/d/1GZ4emu3LxJdQo69yb_FkRfm-6gWqICB_",
+    content: "Beautiful name plaques and signs, designed for custom bedrooms and nurseries with soft natural accents."
+  },
+  {
+    id: 17,
+    imgUrl: "https://lh3.googleusercontent.com/d/1HjFOpCYiGKViypHPXJAK0HMUySta8e-8",
+    content: "Elegant glass tumblers personalized with custom lettering, perfect for refreshing drinks on the go."
+  },
+  {
+    id: 18,
+    imgUrl: "https://lh3.googleusercontent.com/d/1K2B02AnIAeIo2lKbs_T67rkaBNDR9n7j",
+    content: "Custom laser-cut details painted with precision, offering a crisp contemporary styling for your front door."
+  },
+  {
+    id: 19,
+    imgUrl: "https://lh3.googleusercontent.com/d/1M0runU5ILcUGpyWmCpMpSl2Cuk6yqdo9",
+    content: "Charming wooden memory boxes, personalized with beautiful script fonts to hold your precious keepsakes."
+  },
+  {
+    id: 20,
+    imgUrl: "https://lh3.googleusercontent.com/d/1RSREp4Vu6w3d1e5e84CYu0gmOu-w4L6O",
+    content: "Festive custom holiday items and wood tags, bringing an air of warm, handcrafted joy to your home."
+  },
+  {
+    id: 21,
+    imgUrl: "https://lh3.googleusercontent.com/d/1WzHLbH2jJ5ReCG_Qu4rRm_KE1m_G5-Nk",
+    content: "Premium personalized water bottles, combining durable high-grade build with unique vinyl-cut naming."
+  },
+  {
+    id: 22,
+    imgUrl: "https://lh3.googleusercontent.com/d/1aOb7g3kQBFKWZeAwCDMYFS-6uMkXcAmQ",
+    content: "Customized event welcome sign, ideal for weddings, showers, or inviting front entrances."
+  },
+  {
+    id: 23,
+    imgUrl: "https://lh3.googleusercontent.com/d/1gif3mrOFNGNp4kkdkZS22I3U3aB0BOj9",
+    content: "Lovingly created milestone plaques, capturing special growth highlights with graceful script elements."
+  },
+  {
+    id: 24,
+    imgUrl: "https://lh3.googleusercontent.com/d/1kUKPnfDc5YPllJbdMljlPBtf96AoDCxx",
+    content: "Delicate customized transparent acrylic plaques, offering a clean modern aesthetic for the tabletop."
+  },
+  {
+    id: 25,
+    imgUrl: "https://lh3.googleusercontent.com/d/1op4_nlfDdlvxhHtKVL2kyGqpl_BFFKtu",
+    content: "Beautiful personalized custom mugs, perfect for enjoying your morning brew with cozy comfort."
+  },
+  {
+    id: 26,
+    imgUrl: "https://lh3.googleusercontent.com/d/1rQ1lOwzL5EqwiOwoObbEVO90Msu5R8w9",
+    content: "Aesthetic wooden welcome signs, meticulously painted and personalized to match any entryway decor."
+  },
+  {
+    id: 27,
+    imgUrl: "https://lh3.googleusercontent.com/d/1rj5JXySqNbQbvAYaSS33Dd1N-SKhu773",
+    content: "Charming customized holiday slice ornaments, bringing authentic Florida style and character to any tree."
+  },
+  {
+    id: 28,
+    imgUrl: "https://lh3.googleusercontent.com/d/1uSOO0_cZ0CIkBwLMhkzNqiYt3u62Ta9m",
+    content: "Bespoke seasonal and custom table sets, designed to celebrate changing moments in cozy warmth."
+  },
+  {
+    id: 29,
+    imgUrl: "https://lh3.googleusercontent.com/d/1vTjTloOZ07xBCJYE0uOuNdOzCmTfugXl",
+    content: "Whimsical personalized nursery signage, featuring delicate colors and custom laser-cut nameplates."
   }
 ];
 
