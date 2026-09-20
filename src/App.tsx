@@ -47,148 +47,88 @@ const SERVICES = [
 const PORTFOLIO_DATA = [
   {
     id: 1,
-    imgUrl: "https://lh3.googleusercontent.com/d/1MmFgKG9FyQDYRtBKL-WL2mXLvMSg8D1H",
-    content: "A beautiful piece curated to elevate the calm and aesthetics of your space. Perfectly imperfect and full of character."
+    imgUrl: "https://lh3.googleusercontent.com/d/1CNb33AKVezI0U5z_pD4No3JkYxokL4NJ",
+    content: "Handcrafted personalized creations made with care in South Florida, designed to bring personal warmth and elegance to your space."
   },
   {
     id: 2,
-    imgUrl: "https://lh3.googleusercontent.com/d/1NJhLivS3YB5_bufwqEamX3tgB2_fjxiK",
-    content: "Handpicked charm that brings a touch of nature indoors. Neutral tones for a peaceful environment."
+    imgUrl: "https://lh3.googleusercontent.com/d/1KVJxqKwOBQCP7S6dkUANmRRt4FiPXV8e",
+    content: "Bespoke custom pieces featuring precision vinyl detailing and artistic craftsmanship for everyday living."
   },
   {
     id: 3,
-    imgUrl: "https://lh3.googleusercontent.com/d/1YEG7X8e2dxV1IGnCRw-KS35j7DWrsMQ_",
-    content: "Cozy elements that transform a simple corner into a warm sanctuary."
+    imgUrl: "https://lh3.googleusercontent.com/d/1LUdnB41faCpyAKfHrAOQQBwcuzDSc5uv",
+    content: "Artisan personalized gifts curated to celebrate special moments, milestones, and loved ones."
   },
   {
     id: 4,
-    imgUrl: "https://lh3.googleusercontent.com/d/1YMAgPCjikO1nPtThFu0mu9ejYHfUp3ia",
-    content: "Minimalist decor designed to blend seamlessly with your everyday life and rituals."
+    imgUrl: "https://lh3.googleusercontent.com/d/1M1sfdsRnc64OhFqY053l2pGBPQPyzovP",
+    content: "Handmade decorative accents blending natural textures and tailored typography for a cozy home atmosphere."
   },
   {
     id: 5,
-    imgUrl: "https://lh3.googleusercontent.com/d/1aVuXAJ16W9fz2R2IuEibKDTJF_CKDyeV",
-    content: "Earthy textures and soft lighting—the perfect companion for a quiet afternoon."
+    imgUrl: "https://lh3.googleusercontent.com/d/1VPOO7fYe-uxNGVjfSEssaqCc001sjeAI",
+    content: "Custom drinkware and keepsake treasures personalized with love, perfect for gifting or your morning routine."
   },
   {
     id: 6,
-    imgUrl: "https://lh3.googleusercontent.com/d/1e77Dxi-mgNf2HZObaYdg27Tt_yp23btM",
-    content: "Delicate details that speak volumes. Bringing artful intention to your home styling."
+    imgUrl: "https://lh3.googleusercontent.com/d/1Vk6N3TE1dErCa7yApz9NpucyTx-3O6DR",
+    content: "Delicate handcrafted details and custom lettering that turn simple items into lasting memories."
   },
   {
     id: 7,
-    imgUrl: "https://lh3.googleusercontent.com/d/1tgYiRQ5b6tlzHQVVHEE_Bl0SgsvJhkyH",
-    content: "A gentle reminder to pause and appreciate the little things in our surroundings."
+    imgUrl: "https://lh3.googleusercontent.com/d/1XUVoRLZpXroOkOt_x1iQZL5HPa7SsQbN",
+    content: "Custom personalized signs and plaques crafted with timeless style and modern warmth."
   },
   {
     id: 8,
-    imgUrl: "https://lh3.googleusercontent.com/d/1uDQgHYOBt9i6kgyk6p3fGbLd4foJX2So",
-    content: "Curated with love, designed for comfort. Making memories in beautifully styled spaces."
+    imgUrl: "https://lh3.googleusercontent.com/d/1ZC94zOMadIp6Y675DpDMY2eEtvo2WJwH",
+    content: "Unique seasonal accents and custom decor designed to elevate every corner of your home."
   },
   {
     id: 9,
-    imgUrl: "https://lh3.googleusercontent.com/d/1ullojyZbsfOCgQmqNFA8kSwgPUptjUlv",
-    content: "Timeless pieces that add character and warmth to modern and traditional homes alike."
+    imgUrl: "https://lh3.googleusercontent.com/d/1hg6WRtOkylAImSwly9ggMnzCkSsIPi1V",
+    content: "Thoughtfully personalized creations customized to your exact vision and aesthetic preferences."
   },
   {
     id: 10,
-    imgUrl: "https://lh3.googleusercontent.com/d/1xkYCzmKFc-mGOKSbuAUKcXFfh3kxMBVj",
-    content: "Simple joys captured in carefully arranged vignettes across the living space."
+    imgUrl: "https://lh3.googleusercontent.com/d/1kVODs2yhZWg7UCPj-SgKC89vRoHtqdm6",
+    content: "Handmade treasures crafted with dedication, bringing cozy sophistication to any room or gathering."
   },
   {
     id: 11,
-    imgUrl: "https://lh3.googleusercontent.com/d/1ykTazPPma95WM-V2-r97NBEo8dIquC4o",
-    content: "Enhancing the everyday with functional, aesthetically pleasing decor items."
+    imgUrl: "https://lh3.googleusercontent.com/d/1oUdQ2peQOwDVZWhPkjDN9cvmlU-Ket6C",
+    content: "Custom commemorative gifts and keepsakes made to preserve your family's most cherished memories."
   },
   {
     id: 12,
-    imgUrl: "https://lh3.googleusercontent.com/d/1yla8N9FRXsP-Lbvi2bqwl4gmfOKuBxe8",
-    content: "Where comfort meets style. A curated aesthetic for the modern soul."
+    imgUrl: "https://lh3.googleusercontent.com/d/1qTCrq27JzkFU0VdOezxJPhwpZTO_5Grv",
+    content: "Beautifully designed personalized drinkware and accessories crafted with premium vinyl finishes."
   },
   {
     id: 13,
-    imgUrl: "https://lh3.googleusercontent.com/d/102J1M6C1g6xLTzd8JGWv-QUOUJrvcm9X",
-    content: "Bespoke customized drinkware with name decals, blending daily functionality with premium styling."
+    imgUrl: "https://lh3.googleusercontent.com/d/1rzhXPrkpP6scNsqb-hCoy1tBXnQ2rBWp",
+    content: "Artful home decor pieces created by hand, uniting rustic charm with modern clean lines."
   },
   {
     id: 14,
-    imgUrl: "https://lh3.googleusercontent.com/d/11i565G39OSqMLeTcXAw6udc-w5BltF8g",
-    content: "Personalized family wood sign, crafted with clean lines and rustic warmth to match any cozy room."
+    imgUrl: "https://lh3.googleusercontent.com/d/1t0sI7BzltFmiQDli0p50QkE6EOUpgMNf",
+    content: "Custom decorative items designed with care, making every celebration and holiday feel extra special."
   },
   {
     id: 15,
-    imgUrl: "https://lh3.googleusercontent.com/d/1BPWVWPrOZEfIrCwglveub32KFbtmCByx",
-    content: "Custom-crafted seasonal tags and holiday ornaments, meticulously finished to highlight your family milestones."
+    imgUrl: "https://lh3.googleusercontent.com/d/1taGiWgTXtQF7IG2p-rV4mJcx-yzu3VfE",
+    content: "Personalized keepsake crafts designed to express love and appreciation with every detail."
   },
   {
     id: 16,
-    imgUrl: "https://lh3.googleusercontent.com/d/1GZ4emu3LxJdQo69yb_FkRfm-6gWqICB_",
-    content: "Beautiful name plaques and signs, designed for custom bedrooms and nurseries with soft natural accents."
+    imgUrl: "https://lh3.googleusercontent.com/d/1wqlLnXcEjrSlUPfYZoP7wsUSpTpQ5qzj",
+    content: "Handmade decorative signs featuring custom names, dates, and quotes for your home."
   },
   {
     id: 17,
-    imgUrl: "https://lh3.googleusercontent.com/d/1HjFOpCYiGKViypHPXJAK0HMUySta8e-8",
-    content: "Elegant glass tumblers personalized with custom lettering, perfect for refreshing drinks on the go."
-  },
-  {
-    id: 18,
-    imgUrl: "https://lh3.googleusercontent.com/d/1K2B02AnIAeIo2lKbs_T67rkaBNDR9n7j",
-    content: "Custom laser-cut details painted with precision, offering a crisp contemporary styling for your front door."
-  },
-  {
-    id: 19,
-    imgUrl: "https://lh3.googleusercontent.com/d/1M0runU5ILcUGpyWmCpMpSl2Cuk6yqdo9",
-    content: "Charming wooden memory boxes, personalized with beautiful script fonts to hold your precious keepsakes."
-  },
-  {
-    id: 20,
-    imgUrl: "https://lh3.googleusercontent.com/d/1RSREp4Vu6w3d1e5e84CYu0gmOu-w4L6O",
-    content: "Festive custom holiday items and wood tags, bringing an air of warm, handcrafted joy to your home."
-  },
-  {
-    id: 21,
-    imgUrl: "https://lh3.googleusercontent.com/d/1WzHLbH2jJ5ReCG_Qu4rRm_KE1m_G5-Nk",
-    content: "Premium personalized water bottles, combining durable high-grade build with unique vinyl-cut naming."
-  },
-  {
-    id: 22,
-    imgUrl: "https://lh3.googleusercontent.com/d/1aOb7g3kQBFKWZeAwCDMYFS-6uMkXcAmQ",
-    content: "Customized event welcome sign, ideal for weddings, showers, or inviting front entrances."
-  },
-  {
-    id: 23,
-    imgUrl: "https://lh3.googleusercontent.com/d/1gif3mrOFNGNp4kkdkZS22I3U3aB0BOj9",
-    content: "Lovingly created milestone plaques, capturing special growth highlights with graceful script elements."
-  },
-  {
-    id: 24,
-    imgUrl: "https://lh3.googleusercontent.com/d/1kUKPnfDc5YPllJbdMljlPBtf96AoDCxx",
-    content: "Delicate customized transparent acrylic plaques, offering a clean modern aesthetic for the tabletop."
-  },
-  {
-    id: 25,
-    imgUrl: "https://lh3.googleusercontent.com/d/1op4_nlfDdlvxhHtKVL2kyGqpl_BFFKtu",
-    content: "Beautiful personalized custom mugs, perfect for enjoying your morning brew with cozy comfort."
-  },
-  {
-    id: 26,
-    imgUrl: "https://lh3.googleusercontent.com/d/1rQ1lOwzL5EqwiOwoObbEVO90Msu5R8w9",
-    content: "Aesthetic wooden welcome signs, meticulously painted and personalized to match any entryway decor."
-  },
-  {
-    id: 27,
-    imgUrl: "https://lh3.googleusercontent.com/d/1rj5JXySqNbQbvAYaSS33Dd1N-SKhu773",
-    content: "Charming customized holiday slice ornaments, bringing authentic Florida style and character to any tree."
-  },
-  {
-    id: 28,
-    imgUrl: "https://lh3.googleusercontent.com/d/1uSOO0_cZ0CIkBwLMhkzNqiYt3u62Ta9m",
-    content: "Bespoke seasonal and custom table sets, designed to celebrate changing moments in cozy warmth."
-  },
-  {
-    id: 29,
-    imgUrl: "https://lh3.googleusercontent.com/d/1vTjTloOZ07xBCJYE0uOuNdOzCmTfugXl",
-    content: "Whimsical personalized nursery signage, featuring delicate colors and custom laser-cut nameplates."
+    imgUrl: "https://lh3.googleusercontent.com/d/1y3fMHCDPbsAyViDYtaEfUctxzdgC3OP0",
+    content: "One-of-a-kind custom creations tailored with heart, soul, and meticulous craftsmanship."
   }
 ];
 
@@ -239,8 +179,8 @@ export default function App() {
       {/* Top Brand Banner Image (Positioned below the menu bar) */}
       <div className="w-full relative h-[28vh] sm:h-[36vh] md:h-[45vh] min-h-[220px] sm:min-h-[320px] md:min-h-[400px] max-h-[500px] overflow-hidden bg-brand-cream flex justify-center items-center py-6 sm:py-8">
         <img 
-          src="https://lh3.googleusercontent.com/d/1AofX993p0B6j2LZceNH0Ml4pRE29YfzG" 
-          alt="Vettecraft Header Banner" 
+          src="https://lh3.googleusercontent.com/d/19Qijpeq8w4zoSTxhIywBpSwZ64ka4vt2" 
+          alt="VetteCraft by Ivette Logo" 
           className="max-w-[100%] md:max-w-[98%] h-full object-contain scale-105 sm:scale-110 transition-transform duration-500 hover:scale-115"
           referrerPolicy="no-referrer"
         />
@@ -501,9 +441,10 @@ export default function App() {
                 <Heart size={24} className="sm:w-[32px] sm:h-[32px] fill-brand-olive/20" strokeWidth={1.5} />
               </div>
               <img 
-                src="https://lh3.googleusercontent.com/d/1JHFsgCPnR2_mGQ7ll02iH-7Qj5RpTwRd" 
-                alt="Ivette's Studio" 
+                src="https://lh3.googleusercontent.com/d/1CNb33AKVezI0U5z_pD4No3JkYxokL4NJ" 
+                alt="Ivette's Handcrafted Creations" 
                 className="rounded-[24px] sm:rounded-[36px] object-cover w-full h-full"
+                referrerPolicy="no-referrer"
               />
             </div>
           </motion.div>
