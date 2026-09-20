@@ -102,10 +102,47 @@ export const ALL_RAW_IMAGES: GalleryImage[] = [
     imgUrl: "https://lh3.googleusercontent.com/d/1y3fMHCDPbsAyViDYtaEfUctxzdgC3OP0",
     title: "Artisan Studio Keepsake",
     content: "One-of-a-kind custom creation tailored with heart, soul, and meticulous craftsmanship."
+  },
+  {
+    id: 18,
+    imgUrl: "https://lh3.googleusercontent.com/d/1Bifz4DcLgAxtRmwhN1wB9nY3DGZdcp6V",
+    title: "Handcrafted Artisan Candle",
+    content: "Hand-poured artisan candle blending warm botanical aromas and tranquil ambiance for your home."
+  },
+  {
+    id: 19,
+    imgUrl: "https://lh3.googleusercontent.com/d/1ROTDMICn30S1I93iIXDAUM_DVxwlU2zw",
+    title: "Custom Scented Candle Creation",
+    content: "Delicately poured scented candle crafted with natural wax and personalized details."
+  },
+  {
+    id: 20,
+    imgUrl: "https://lh3.googleusercontent.com/d/1eQx1uFz9GtdUQwWFmNazwUsKf2rrr4qL",
+    title: "Aromatherapy Studio Candle",
+    content: "Pure soothing candle hand-poured in South Florida to bring serenity to every room."
+  },
+  {
+    id: 21,
+    imgUrl: "https://lh3.googleusercontent.com/d/1yxYwmXsPxBGKqSh1I4A_19Iw0CEj8_Dm",
+    title: "Cozy Flame Keepsake Candle",
+    content: "Bespoke handcrafted candle with custom labeling, perfect for cozy evenings or thoughtful gifting."
   }
 ];
 
 export const DEFAULT_GALLERY_FOLDERS: GalleryFolder[] = [
+  {
+    id: "folder-candles",
+    name: "Handcrafted Candles",
+    description: "Hand-poured artisan candles with soothing aromas and personalized touches for your sanctuary.",
+    coverImageId: 18,
+    visible: true,
+    images: [
+      { ...ALL_RAW_IMAGES[17], visible: true },
+      { ...ALL_RAW_IMAGES[18], visible: true },
+      { ...ALL_RAW_IMAGES[19], visible: true },
+      { ...ALL_RAW_IMAGES[20], visible: true }
+    ]
+  },
   {
     id: "folder-drinkware",
     name: "Custom Drinkware & Tumblers",

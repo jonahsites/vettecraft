@@ -133,19 +133,64 @@ const PORTFOLIO_DATA = [
     id: 17,
     imgUrl: "https://lh3.googleusercontent.com/d/1y3fMHCDPbsAyViDYtaEfUctxzdgC3OP0",
     content: "One-of-a-kind custom creations tailored with heart, soul, and meticulous craftsmanship."
+  },
+  {
+    id: 18,
+    imgUrl: "https://lh3.googleusercontent.com/d/1Bifz4DcLgAxtRmwhN1wB9nY3DGZdcp6V",
+    content: "Hand-poured artisan candle blending warm botanical aromas and tranquil ambiance for your home."
+  },
+  {
+    id: 19,
+    imgUrl: "https://lh3.googleusercontent.com/d/1ROTDMICn30S1I93iIXDAUM_DVxwlU2zw",
+    content: "Delicately poured scented candle crafted with natural wax and personalized details."
+  },
+  {
+    id: 20,
+    imgUrl: "https://lh3.googleusercontent.com/d/1eQx1uFz9GtdUQwWFmNazwUsKf2rrr4qL",
+    content: "Pure soothing candle hand-poured in South Florida to bring serenity to every room."
+  },
+  {
+    id: 21,
+    imgUrl: "https://lh3.googleusercontent.com/d/1yxYwmXsPxBGKqSh1I4A_19Iw0CEj8_Dm",
+    content: "Bespoke handcrafted candle with custom labeling, perfect for cozy evenings or thoughtful gifting."
   }
 ];
+
+const STORAGE_KEY = 'vettecraft_gallery_folders_v3';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('home');
   const [folders, setFolders] = useState<GalleryFolder[]>(() => {
     if (typeof window !== 'undefined') {
       try {
-        const saved = localStorage.getItem('vettecraft_gallery_folders_v2');
+        const saved = localStorage.getItem(STORAGE_KEY);
         if (saved) {
           const parsed = JSON.parse(saved);
           if (Array.isArray(parsed) && parsed.length > 0) {
+            // Ensure folder-candles exists
+            const hasCandles = parsed.some((f: GalleryFolder) => f.id === 'folder-candles' || f.name.toLowerCase().includes('candle'));
+            if (!hasCandles) {
+              const defaultCandles = DEFAULT_GALLERY_FOLDERS.find(f => f.id === 'folder-candles');
+              if (defaultCandles) {
+                return [defaultCandles, ...parsed];
+              }
+            }
             return parsed;
+          }
+        }
+        // Also check v2 if v3 doesn't exist yet, merging candles folder
+        const v2Saved = localStorage.getItem('vettecraft_gallery_folders_v2');
+        if (v2Saved) {
+          const parsedV2 = JSON.parse(v2Saved);
+          if (Array.isArray(parsedV2) && parsedV2.length > 0) {
+            const hasCandles = parsedV2.some((f: GalleryFolder) => f.id === 'folder-candles' || f.name.toLowerCase().includes('candle'));
+            if (!hasCandles) {
+              const defaultCandles = DEFAULT_GALLERY_FOLDERS.find(f => f.id === 'folder-candles');
+              if (defaultCandles) {
+                return [defaultCandles, ...parsedV2];
+              }
+            }
+            return parsedV2;
           }
         }
       } catch (e) {
@@ -160,7 +205,7 @@ export default function App() {
   const handleSaveFolders = (updatedFolders: GalleryFolder[]) => {
     setFolders(updatedFolders);
     try {
-      localStorage.setItem('vettecraft_gallery_folders_v2', JSON.stringify(updatedFolders));
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(updatedFolders));
     } catch (e) {
       console.error('Failed to save gallery folders', e);
     }
@@ -348,13 +393,21 @@ export default function App() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.4, duration: 0.6 }}
               onClick={() => scrollToSection('shop')}
-              className="flex-1 bg-white rounded-[24px] sm:rounded-[40px] p-4 sm:p-8 flex flex-col justify-center items-center text-center border-b-4 border-brand-cream soft-shadow group hover:-translate-y-1 transition-transform cursor-pointer"
+              className="flex-1 bg-white rounded-[24px] sm:rounded-[40px] p-4 sm:p-6 flex flex-col justify-between items-center text-center border-b-4 border-brand-cream soft-shadow group hover:-translate-y-1 transition-transform cursor-pointer relative overflow-hidden"
             >
-              <div className="w-10 h-10 sm:w-14 sm:h-14 bg-brand-cream rounded-full flex items-center justify-center mb-3 sm:mb-5 group-hover:scale-110 transition-transform shadow-sm">
-                <Sparkles size={16} className="sm:w-[24px] sm:h-[24px] text-brand-charcoal" strokeWidth={1.5} />
+              {/* Image thumbnail feature */}
+              <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl sm:rounded-3xl overflow-hidden mb-3 shadow-md border-2 border-brand-cream group-hover:scale-105 transition-transform bg-brand-cream/30">
+                <img 
+                  src="https://lh3.googleusercontent.com/d/1wWTYg3ZU6QZ13IoE5telYCZb6Ie8tycV" 
+                  alt="Personalized Mugs" 
+                  className="w-full h-full object-cover"
+                  referrerPolicy="no-referrer"
+                />
               </div>
-              <h3 className="text-sm sm:text-xl font-medium font-adren text-brand-charcoal">Curation Box</h3>
-              <p className="text-[8px] sm:text-[10px] mt-1 sm:mt-2 text-brand-taupe px-1 sm:px-4 font-bold uppercase tracking-widest leading-relaxed">Seasonal Surprises</p>
+              <div>
+                <h3 className="text-sm sm:text-lg font-medium font-adren text-brand-charcoal">Personalized Mugs</h3>
+                <p className="text-[8px] sm:text-[10px] mt-1 text-brand-taupe px-1 sm:px-2 font-bold uppercase tracking-widest leading-relaxed">Custom Crafted Sipware</p>
+              </div>
             </motion.div>
           </div>
         </div>
