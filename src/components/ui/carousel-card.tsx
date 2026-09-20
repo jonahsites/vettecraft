@@ -1,20 +1,26 @@
-import { useState, useEffect, useRef } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import React, { useState, useEffect, useRef } from "react";
+import { ChevronLeft, ChevronRight, Folder, Sparkles, Eye } from "lucide-react";
 
 // Define the type for card data
-interface CardData {
+export interface CardData {
   id?: number | string;
   imgUrl: string;
-  content: string;
+  content?: string;
+  folderName?: string;
+  photoCount?: number;
+  folderId?: string;
+  rawFolder?: any;
 }
 
 interface CardProps {
+  key?: React.Key;
   data: CardData[];
   showCarousel?: boolean;
   cardsPerView?: number;
+  onCardClick?: (card: CardData) => void;
 }
 
-const Card = ({ data, showCarousel = true, cardsPerView: defaultCardsPerView = 3 }: CardProps) => {
+const Card = ({ data, showCarousel = true, cardsPerView: defaultCardsPerView = 3, onCardClick }: CardProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isSingleCard, setIsSingleCard] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
@@ -23,6 +29,7 @@ const Card = ({ data, showCarousel = true, cardsPerView: defaultCardsPerView = 3
 
   useEffect(() => {
     setIsSingleCard(data?.length === 1);
+    setCurrentIndex(0);
   }, [data]);
 
   useEffect(() => {
@@ -167,20 +174,64 @@ const Card = ({ data, showCarousel = true, cardsPerView: defaultCardsPerView = 3
                 }}
                 className="px-3"
               >
-                <div className="relative overflow-hidden rounded-[24px] shadow-sm group h-full bg-[#F5EDE8] border border-white">
-                  <div className="w-full aspect-[4/5]">
+                <div 
+                  onClick={() => onCardClick?.(card)}
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      onCardClick?.(card);
+                    }
+                  }}
+                  className="relative overflow-hidden rounded-[24px] shadow-sm hover:shadow-xl group h-full bg-[#F5EDE8] border border-white cursor-pointer transition-all duration-300 hover:-translate-y-1"
+                >
+                  {/* Top Folder Indicator Badge */}
+                  {card.photoCount !== undefined && (
+                    <div className="absolute top-3.5 left-3.5 z-20 flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-charcoal/80 backdrop-blur-md text-white text-[11px] font-bold tracking-wide shadow-md group-hover:bg-brand-olive transition-colors">
+                      <Folder size={12} className="text-brand-cream fill-brand-cream/30" />
+                      <span>{card.photoCount} {card.photoCount === 1 ? 'Photo' : 'Photos'}</span>
+                    </div>
+                  )}
+
+                  {/* Top Right Click Hint */}
+                  <div className="absolute top-3.5 right-3.5 z-20 w-8 h-8 rounded-full bg-white/90 backdrop-blur-md text-brand-charcoal flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 shadow-md group-hover:scale-105">
+                    <Eye size={14} className="text-brand-olive" />
+                  </div>
+
+                  {/* Main Displayed Image (Cover) */}
+                  <div className="w-full aspect-[4/5] overflow-hidden bg-brand-cream/30">
                     <img
                       src={card.imgUrl}
-                      alt={card.content || "Gallery image"}
+                      alt={card.folderName || card.content || "Gallery folder cover"}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      referrerPolicy="no-referrer"
                     />
                   </div>
                   
-                  {card.content && (
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6 overflow-y-auto">
-                      <p className="text-white text-sm font-medium leading-relaxed font-serif">{card.content}</p>
+                  {/* Bottom Folder Caption Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent opacity-90 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
+                    {card.folderName && (
+                      <span className="text-[10px] uppercase font-bold tracking-widest text-brand-beige mb-1 flex items-center gap-1">
+                        <Sparkles size={11} className="text-brand-cream" />
+                        Collection
+                      </span>
+                    )}
+                    {card.folderName && (
+                      <h4 className="text-white text-base sm:text-lg font-adren font-bold tracking-wide leading-tight mb-1.5 drop-shadow">
+                        {card.folderName}
+                      </h4>
+                    )}
+                    {card.content && (
+                      <p className="text-white/80 text-xs font-sans line-clamp-2 leading-relaxed mb-2 font-light">
+                        {card.content}
+                      </p>
+                    )}
+                    <div className="flex items-center gap-1.5 text-[11px] font-bold text-brand-cream tracking-wide opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-1 group-hover:translate-y-0">
+                      <span>Click to open folder & view all photos</span>
+                      <span>&rarr;</span>
                     </div>
-                  )}
+                  </div>
                 </div>
               </div>
             ))}

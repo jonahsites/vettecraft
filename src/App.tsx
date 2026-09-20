@@ -1,9 +1,13 @@
 import { motion } from 'motion/react';
-import { Gift, Home, MapPin, Heart, Sparkles, Star, Send, Mail, User, MessageSquare, ArrowRight, Cloud, Sun, Flower2, Coffee } from 'lucide-react';
+import { Gift, Home, MapPin, Heart, Sparkles, Star, Send, Mail, User, MessageSquare, ArrowRight, Cloud, Sun, Flower2, Coffee, SlidersHorizontal, Folder } from 'lucide-react';
 import { useState } from 'react';
 import { useScroll } from 'framer-motion';
-import Card from "./components/ui/carousel-card";
+import Card, { CardData } from "./components/ui/carousel-card";
 import { CustomWoodSign } from "./components/ui/custom-wood-sign";
+import { GalleryOrganizerModal } from "./components/ui/gallery-organizer-modal";
+import { FolderDetailModal } from "./components/ui/folder-detail-modal";
+import { DEFAULT_GALLERY_FOLDERS, ALL_RAW_IMAGES } from "./data/default-gallery";
+import { GalleryFolder } from "./types/gallery";
 
 const SERVICES = [
   {
@@ -134,6 +138,55 @@ const PORTFOLIO_DATA = [
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('home');
+  const [folders, setFolders] = useState<GalleryFolder[]>(() => {
+    if (typeof window !== 'undefined') {
+      try {
+        const saved = localStorage.getItem('vettecraft_gallery_folders_v2');
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          if (Array.isArray(parsed) && parsed.length > 0) {
+            return parsed;
+          }
+        }
+      } catch (e) {
+        console.error('Failed to parse saved gallery folders', e);
+      }
+    }
+    return DEFAULT_GALLERY_FOLDERS;
+  });
+  const [isOrganizeOpen, setIsOrganizeOpen] = useState(false);
+  const [selectedFolderForModal, setSelectedFolderForModal] = useState<GalleryFolder | null>(null);
+
+  const handleSaveFolders = (updatedFolders: GalleryFolder[]) => {
+    setFolders(updatedFolders);
+    try {
+      localStorage.setItem('vettecraft_gallery_folders_v2', JSON.stringify(updatedFolders));
+    } catch (e) {
+      console.error('Failed to save gallery folders', e);
+    }
+    if (selectedFolderForModal) {
+      const updatedCurrent = updatedFolders.find((f) => f.id === selectedFolderForModal.id);
+      if (updatedCurrent) {
+        setSelectedFolderForModal(updatedCurrent);
+      }
+    }
+  };
+
+  // Convert active folders into CardData for carousel
+  const activeFolders = folders.filter((f) => f.visible !== false && f.images.length > 0);
+  const carouselData: CardData[] = (activeFolders.length > 0 ? activeFolders : DEFAULT_GALLERY_FOLDERS).map((folder) => {
+    const coverImg = folder.images.find((img) => img.id === folder.coverImageId) || folder.images[0];
+    const visibleCount = folder.images.filter((img) => img.visible !== false).length;
+    return {
+      id: folder.id,
+      imgUrl: coverImg ? coverImg.imgUrl : (ALL_RAW_IMAGES[0]?.imgUrl || ""),
+      folderName: folder.name,
+      content: folder.description || coverImg?.content,
+      photoCount: visibleCount,
+      folderId: folder.id,
+      rawFolder: folder,
+    };
+  });
 
   const scrollToSection = (id: string) => {
     setActiveTab(id);
@@ -177,16 +230,16 @@ export default function App() {
       </nav>
 
       {/* Top Brand Banner Image (Positioned below the menu bar) */}
-      <div className="w-full relative h-[28vh] sm:h-[36vh] md:h-[45vh] min-h-[220px] sm:min-h-[320px] md:min-h-[400px] max-h-[500px] overflow-hidden bg-brand-cream flex justify-center items-center py-6 sm:py-8">
+      <div className="w-full relative h-[22vh] sm:h-[29vh] md:h-[36vh] min-h-[180px] sm:min-h-[260px] md:min-h-[320px] max-h-[400px] overflow-hidden bg-brand-cream flex justify-center items-center py-4 sm:py-6">
         <img 
           src="https://lh3.googleusercontent.com/d/19Qijpeq8w4zoSTxhIywBpSwZ64ka4vt2" 
           alt="VetteCraft by Ivette Logo" 
-          className="max-w-[100%] md:max-w-[98%] h-full object-contain scale-105 sm:scale-110 transition-transform duration-500 hover:scale-115"
+          className="max-w-[92%] md:max-w-[85%] h-full object-contain transition-transform duration-500 hover:scale-[1.03]"
           referrerPolicy="no-referrer"
         />
         {/* Sophisticated subtle gradient mapping for seamless integration */}
-        <div className="absolute inset-x-0 top-0 h-12 bg-gradient-to-b from-[#25211b]/5 to-transparent pointer-events-none"></div>
-        <div className="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-brand-cream to-transparent pointer-events-none"></div>
+        <div className="absolute inset-x-0 top-0 h-10 bg-gradient-to-b from-[#25211b]/5 to-transparent pointer-events-none"></div>
+        <div className="absolute inset-x-0 bottom-0 h-10 bg-gradient-to-t from-brand-cream to-transparent pointer-events-none"></div>
       </div>
 
       {/* Modern fluid bottom navigation bar for mobile only */}
@@ -404,16 +457,64 @@ export default function App() {
               <h2 className="text-4xl sm:text-5xl font-adren font-bold gold-gradient-text">Featured Creations</h2>
               <p className="text-brand-taupe font-bold text-[9px] sm:text-[10px] uppercase tracking-widest mt-3 sm:mt-4">A peek into our recent creations</p>
             </div>
-            <button className="flex items-center justify-center gap-2 text-brand-olive text-[10px] uppercase tracking-widest font-bold hover:gap-4 transition-all pb-2 sm:pb-0">
-              View All <ArrowRight size={14} />
-            </button>
+            <div className="flex items-center gap-3">
+              <button 
+                id="organize-gallery-btn"
+                type="button"
+                onClick={() => setIsOrganizeOpen(true)}
+                className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-full bg-brand-charcoal text-white hover:bg-brand-olive text-[10px] sm:text-[11px] uppercase tracking-widest font-bold shadow-md hover:shadow-lg transition-all hover:scale-105 active:scale-95"
+              >
+                <SlidersHorizontal size={13} className="text-brand-cream" />
+                <span>Organize Folders</span>
+              </button>
+              <button 
+                type="button"
+                onClick={() => {
+                  if (activeFolders.length > 0) {
+                    setSelectedFolderForModal(activeFolders[0]);
+                  }
+                }}
+                className="flex items-center justify-center gap-2 text-brand-olive text-[10px] uppercase tracking-widest font-bold hover:gap-3 transition-all pb-2 sm:pb-0"
+              >
+                <span>Explore ({activeFolders.length} Folders)</span>
+                <ArrowRight size={14} />
+              </button>
+            </div>
           </div>
 
           <div className="w-full relative z-10 px-2 sm:px-8 py-4">
-            <Card data={PORTFOLIO_DATA} showCarousel={true} cardsPerView={3} />
+            <Card 
+              key={activeFolders.map((f) => `${f.id}-${f.coverImageId}`).join('-')}
+              data={carouselData} 
+              showCarousel={true} 
+              cardsPerView={3} 
+              onCardClick={(card) => {
+                if (card.rawFolder) {
+                  setSelectedFolderForModal(card.rawFolder);
+                }
+              }}
+            />
           </div>
         </div>
       </section>
+
+      {/* Folder Detail Modal - Opens when clicking a displayed carousel image */}
+      <FolderDetailModal
+        isOpen={selectedFolderForModal !== null}
+        folder={selectedFolderForModal}
+        onClose={() => setSelectedFolderForModal(null)}
+        onOpenOrganizer={() => setIsOrganizeOpen(true)}
+      />
+
+      {/* Gallery & Folder Organizer Modal */}
+      <GalleryOrganizerModal
+        isOpen={isOrganizeOpen}
+        onClose={() => setIsOrganizeOpen(false)}
+        folders={folders}
+        defaultFolders={DEFAULT_GALLERY_FOLDERS}
+        allImages={ALL_RAW_IMAGES}
+        onSave={handleSaveFolders}
+      />
 
       {/* Custom Sign Section */}
       <section id="custom-sign" className="py-16 sm:py-24 px-4 sm:px-6 border-t border-brand-beige/50 relative z-10 overflow-hidden bg-gradient-to-b from-transparent to-brand-beige/20">
@@ -441,7 +542,7 @@ export default function App() {
                 <Heart size={24} className="sm:w-[32px] sm:h-[32px] fill-brand-olive/20" strokeWidth={1.5} />
               </div>
               <img 
-                src="https://lh3.googleusercontent.com/d/1CNb33AKVezI0U5z_pD4No3JkYxokL4NJ" 
+                src="https://lh3.googleusercontent.com/d/1E7p4vJzPjXRVamNqYrL3WLHu6XX0vmBO" 
                 alt="Ivette's Handcrafted Creations" 
                 className="rounded-[24px] sm:rounded-[36px] object-cover w-full h-full"
                 referrerPolicy="no-referrer"
