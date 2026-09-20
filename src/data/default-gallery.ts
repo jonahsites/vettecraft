@@ -126,6 +126,12 @@ export const ALL_RAW_IMAGES: GalleryImage[] = [
     imgUrl: "https://lh3.googleusercontent.com/d/1yxYwmXsPxBGKqSh1I4A_19Iw0CEj8_Dm",
     title: "Cozy Flame Keepsake Candle",
     content: "Bespoke handcrafted candle with custom labeling, perfect for cozy evenings or thoughtful gifting."
+  },
+  {
+    id: 22,
+    imgUrl: "https://lh3.googleusercontent.com/d/1e5r0ZIUnQX_EzUgWZH8vOPkeoTqoSPw_",
+    title: "Personalized Custom Mug",
+    content: "Bespoke handcrafted custom mug personalized with precision vinyl detailing for your favorite brew."
   }
 ];
 
@@ -145,11 +151,12 @@ export const DEFAULT_GALLERY_FOLDERS: GalleryFolder[] = [
   },
   {
     id: "folder-drinkware",
-    name: "Custom Drinkware & Tumblers",
-    description: "Personalized glass cans, insulated tumblers, and mugs designed for daily joy.",
-    coverImageId: 1,
+    name: "Custom Mugs & Drinkware",
+    description: "Personalized custom mugs, glass cans, insulated tumblers, and sipware designed for daily joy.",
+    coverImageId: 22,
     visible: true,
     images: [
+      { ...ALL_RAW_IMAGES[21], visible: true },
       { ...ALL_RAW_IMAGES[0], visible: true },
       { ...ALL_RAW_IMAGES[4], visible: true },
       { ...ALL_RAW_IMAGES[11], visible: true },

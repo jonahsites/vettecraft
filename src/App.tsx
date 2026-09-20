@@ -153,44 +153,59 @@ const PORTFOLIO_DATA = [
     id: 21,
     imgUrl: "https://lh3.googleusercontent.com/d/1yxYwmXsPxBGKqSh1I4A_19Iw0CEj8_Dm",
     content: "Bespoke handcrafted candle with custom labeling, perfect for cozy evenings or thoughtful gifting."
+  },
+  {
+    id: 22,
+    imgUrl: "https://lh3.googleusercontent.com/d/1e5r0ZIUnQX_EzUgWZH8vOPkeoTqoSPw_",
+    content: "Bespoke handcrafted custom mug personalized with precision vinyl detailing for your favorite brew."
   }
 ];
 
-const STORAGE_KEY = 'vettecraft_gallery_folders_v3';
+const STORAGE_KEY = 'vettecraft_gallery_folders_v4';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('home');
   const [folders, setFolders] = useState<GalleryFolder[]>(() => {
     if (typeof window !== 'undefined') {
       try {
-        const saved = localStorage.getItem(STORAGE_KEY);
+        const saved = localStorage.getItem(STORAGE_KEY) || localStorage.getItem('vettecraft_gallery_folders_v3') || localStorage.getItem('vettecraft_gallery_folders_v2');
         if (saved) {
           const parsed = JSON.parse(saved);
           if (Array.isArray(parsed) && parsed.length > 0) {
+            let updatedList = [...parsed];
             // Ensure folder-candles exists
-            const hasCandles = parsed.some((f: GalleryFolder) => f.id === 'folder-candles' || f.name.toLowerCase().includes('candle'));
+            const hasCandles = updatedList.some((f: GalleryFolder) => f.id === 'folder-candles' || f.name.toLowerCase().includes('candle'));
             if (!hasCandles) {
               const defaultCandles = DEFAULT_GALLERY_FOLDERS.find(f => f.id === 'folder-candles');
               if (defaultCandles) {
-                return [defaultCandles, ...parsed];
+                updatedList.unshift(defaultCandles);
               }
             }
-            return parsed;
-          }
-        }
-        // Also check v2 if v3 doesn't exist yet, merging candles folder
-        const v2Saved = localStorage.getItem('vettecraft_gallery_folders_v2');
-        if (v2Saved) {
-          const parsedV2 = JSON.parse(v2Saved);
-          if (Array.isArray(parsedV2) && parsedV2.length > 0) {
-            const hasCandles = parsedV2.some((f: GalleryFolder) => f.id === 'folder-candles' || f.name.toLowerCase().includes('candle'));
-            if (!hasCandles) {
-              const defaultCandles = DEFAULT_GALLERY_FOLDERS.find(f => f.id === 'folder-candles');
-              if (defaultCandles) {
-                return [defaultCandles, ...parsedV2];
+            // Ensure the new custom mug image (id: 22) is in the custom mugs / drinkware folder
+            const mugImageObj = ALL_RAW_IMAGES.find(img => img.id === 22) || {
+              id: 22,
+              imgUrl: "https://lh3.googleusercontent.com/d/1e5r0ZIUnQX_EzUgWZH8vOPkeoTqoSPw_",
+              title: "Personalized Custom Mug",
+              content: "Bespoke handcrafted custom mug personalized with precision vinyl detailing for your favorite brew.",
+              visible: true,
+            };
+
+            updatedList = updatedList.map((f: GalleryFolder) => {
+              if (f.id === 'folder-drinkware' || f.name.toLowerCase().includes('mug') || f.name.toLowerCase().includes('drinkware')) {
+                const hasMug = f.images.some(img => img.id === 22 || img.imgUrl.includes('1e5r0ZIUnQX_EzUgWZH8vOPkeoTqoSPw_'));
+                if (!hasMug) {
+                  return {
+                    ...f,
+                    name: f.name.includes("Mug") ? f.name : "Custom Mugs & Drinkware",
+                    coverImageId: 22,
+                    images: [{ ...mugImageObj, visible: true }, ...f.images],
+                  };
+                }
               }
-            }
-            return parsedV2;
+              return f;
+            });
+
+            return updatedList;
           }
         }
       } catch (e) {
