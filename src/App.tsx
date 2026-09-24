@@ -11,17 +11,17 @@ import { GalleryFolder } from "./types/gallery";
 
 const SERVICES = [
   {
-    title: 'Personalized Gifts',
-    description: 'Custom-made treasures bursting with love, beautifully personalized with premium vinyl.',
-    icon: Gift,
+    title: 'Personalized Mugs',
+    description: 'Personalized mini mugs in beautiful pastel colors with custom family titles, names, and bespoke vinyl detailing.',
+    icon: Coffee,
     color: 'bg-white',
     borderColor: 'border-brand-cream',
     textColor: 'text-brand-olive',
     subTextColor: 'text-brand-taupe',
   },
   {
-    title: 'Home Decor',
-    description: 'Curated and crafted pieces designed to bring warmth and character to every room of your home.',
+    title: 'Kitchen Decor',
+    description: 'Decorative kitchen boards, cortadito coffee signs, custom cutting boards, and charming kitchen creations.',
     icon: Home,
     color: 'bg-brand-beige',
     borderColor: 'border-brand-taupe/20',
@@ -29,183 +29,46 @@ const SERVICES = [
     subTextColor: 'text-brand-taupe',
   },
   {
-    title: 'Seasonal Items',
-    description: 'Cozy additions and festive custom decorations designed to celebrate changing seasons.',
-    icon: Flower2,
+    title: 'Handcrafted Frames & Decor',
+    description: 'Heartfelt framed pieces, family & grandparents designs, angels, and religious scripture art with dimensional details.',
+    icon: Sparkles,
     color: 'bg-[#FDFBF7]',
     borderColor: 'border-brand-beige',
     textColor: 'text-brand-olive',
     subTextColor: 'text-brand-taupe',
   },
   {
-    title: 'Custom Pieces',
-    description: 'Have a beautiful vision? Let’s bring your bespoke design ideas to life with loving care.',
-    icon: Sparkles,
+    title: 'Seasonal Decor',
+    description: 'Handcrafted festive wreaths and holiday decor pieces celebrating Christmas, Fall, Easter, and cherished seasons.',
+    icon: Flower2,
     color: 'bg-brand-sage',
     borderColor: 'border-brand-olive/20',
-    textColor: 'text-brand-white',
-    subTextColor: 'text-brand-white/80',
+    textColor: 'text-white',
+    subTextColor: 'text-white/80',
   },
 ];
 
-const PORTFOLIO_DATA = [
-  {
-    id: 1,
-    imgUrl: "https://lh3.googleusercontent.com/d/1CNb33AKVezI0U5z_pD4No3JkYxokL4NJ",
-    content: "Handcrafted personalized creations made with care in South Florida, designed to bring personal warmth and elegance to your space."
-  },
-  {
-    id: 2,
-    imgUrl: "https://lh3.googleusercontent.com/d/1KVJxqKwOBQCP7S6dkUANmRRt4FiPXV8e",
-    content: "Bespoke custom pieces featuring precision vinyl detailing and artistic craftsmanship for everyday living."
-  },
-  {
-    id: 3,
-    imgUrl: "https://lh3.googleusercontent.com/d/1LUdnB41faCpyAKfHrAOQQBwcuzDSc5uv",
-    content: "Artisan personalized gifts curated to celebrate special moments, milestones, and loved ones."
-  },
-  {
-    id: 4,
-    imgUrl: "https://lh3.googleusercontent.com/d/1M1sfdsRnc64OhFqY053l2pGBPQPyzovP",
-    content: "Handmade decorative accents blending natural textures and tailored typography for a cozy home atmosphere."
-  },
-  {
-    id: 5,
-    imgUrl: "https://lh3.googleusercontent.com/d/1VPOO7fYe-uxNGVjfSEssaqCc001sjeAI",
-    content: "Custom drinkware and keepsake treasures personalized with love, perfect for gifting or your morning routine."
-  },
-  {
-    id: 6,
-    imgUrl: "https://lh3.googleusercontent.com/d/1Vk6N3TE1dErCa7yApz9NpucyTx-3O6DR",
-    content: "Delicate handcrafted details and custom lettering that turn simple items into lasting memories."
-  },
-  {
-    id: 7,
-    imgUrl: "https://lh3.googleusercontent.com/d/1XUVoRLZpXroOkOt_x1iQZL5HPa7SsQbN",
-    content: "Custom personalized signs and plaques crafted with timeless style and modern warmth."
-  },
-  {
-    id: 8,
-    imgUrl: "https://lh3.googleusercontent.com/d/1ZC94zOMadIp6Y675DpDMY2eEtvo2WJwH",
-    content: "Unique seasonal accents and custom decor designed to elevate every corner of your home."
-  },
-  {
-    id: 9,
-    imgUrl: "https://lh3.googleusercontent.com/d/1hg6WRtOkylAImSwly9ggMnzCkSsIPi1V",
-    content: "Thoughtfully personalized creations customized to your exact vision and aesthetic preferences."
-  },
-  {
-    id: 10,
-    imgUrl: "https://lh3.googleusercontent.com/d/1kVODs2yhZWg7UCPj-SgKC89vRoHtqdm6",
-    content: "Handmade treasures crafted with dedication, bringing cozy sophistication to any room or gathering."
-  },
-  {
-    id: 11,
-    imgUrl: "https://lh3.googleusercontent.com/d/1oUdQ2peQOwDVZWhPkjDN9cvmlU-Ket6C",
-    content: "Custom commemorative gifts and keepsakes made to preserve your family's most cherished memories."
-  },
-  {
-    id: 12,
-    imgUrl: "https://lh3.googleusercontent.com/d/1qTCrq27JzkFU0VdOezxJPhwpZTO_5Grv",
-    content: "Beautifully designed personalized drinkware and accessories crafted with premium vinyl finishes."
-  },
-  {
-    id: 13,
-    imgUrl: "https://lh3.googleusercontent.com/d/1rzhXPrkpP6scNsqb-hCoy1tBXnQ2rBWp",
-    content: "Artful home decor pieces created by hand, uniting rustic charm with modern clean lines."
-  },
-  {
-    id: 14,
-    imgUrl: "https://lh3.googleusercontent.com/d/1t0sI7BzltFmiQDli0p50QkE6EOUpgMNf",
-    content: "Custom decorative items designed with care, making every celebration and holiday feel extra special."
-  },
-  {
-    id: 15,
-    imgUrl: "https://lh3.googleusercontent.com/d/1taGiWgTXtQF7IG2p-rV4mJcx-yzu3VfE",
-    content: "Personalized keepsake crafts designed to express love and appreciation with every detail."
-  },
-  {
-    id: 16,
-    imgUrl: "https://lh3.googleusercontent.com/d/1wqlLnXcEjrSlUPfYZoP7wsUSpTpQ5qzj",
-    content: "Handmade decorative signs featuring custom names, dates, and quotes for your home."
-  },
-  {
-    id: 17,
-    imgUrl: "https://lh3.googleusercontent.com/d/1y3fMHCDPbsAyViDYtaEfUctxzdgC3OP0",
-    content: "One-of-a-kind custom creations tailored with heart, soul, and meticulous craftsmanship."
-  },
-  {
-    id: 18,
-    imgUrl: "https://lh3.googleusercontent.com/d/1Bifz4DcLgAxtRmwhN1wB9nY3DGZdcp6V",
-    content: "Hand-poured artisan candle blending warm botanical aromas and tranquil ambiance for your home."
-  },
-  {
-    id: 19,
-    imgUrl: "https://lh3.googleusercontent.com/d/1ROTDMICn30S1I93iIXDAUM_DVxwlU2zw",
-    content: "Delicately poured scented candle crafted with natural wax and personalized details."
-  },
-  {
-    id: 20,
-    imgUrl: "https://lh3.googleusercontent.com/d/1eQx1uFz9GtdUQwWFmNazwUsKf2rrr4qL",
-    content: "Pure soothing candle hand-poured in South Florida to bring serenity to every room."
-  },
-  {
-    id: 21,
-    imgUrl: "https://lh3.googleusercontent.com/d/1yxYwmXsPxBGKqSh1I4A_19Iw0CEj8_Dm",
-    content: "Bespoke handcrafted candle with custom labeling, perfect for cozy evenings or thoughtful gifting."
-  },
-  {
-    id: 22,
-    imgUrl: "https://lh3.googleusercontent.com/d/1e5r0ZIUnQX_EzUgWZH8vOPkeoTqoSPw_",
-    content: "Bespoke handcrafted custom mug personalized with precision vinyl detailing for your favorite brew."
-  }
-];
-
-const STORAGE_KEY = 'vettecraft_gallery_folders_v4';
+const STORAGE_KEY = 'vettecraft_gallery_folders_v5';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('home');
   const [folders, setFolders] = useState<GalleryFolder[]>(() => {
     if (typeof window !== 'undefined') {
       try {
-        const saved = localStorage.getItem(STORAGE_KEY) || localStorage.getItem('vettecraft_gallery_folders_v3') || localStorage.getItem('vettecraft_gallery_folders_v2');
+        // Clean up legacy keys that contained obsolete categories (like candles or mislabeled drinkware)
+        localStorage.removeItem('vettecraft_gallery_folders_v2');
+        localStorage.removeItem('vettecraft_gallery_folders_v3');
+        localStorage.removeItem('vettecraft_gallery_folders_v4');
+
+        const saved = localStorage.getItem(STORAGE_KEY);
         if (saved) {
           const parsed = JSON.parse(saved);
           if (Array.isArray(parsed) && parsed.length > 0) {
-            let updatedList = [...parsed];
-            // Ensure folder-candles exists
-            const hasCandles = updatedList.some((f: GalleryFolder) => f.id === 'folder-candles' || f.name.toLowerCase().includes('candle'));
-            if (!hasCandles) {
-              const defaultCandles = DEFAULT_GALLERY_FOLDERS.find(f => f.id === 'folder-candles');
-              if (defaultCandles) {
-                updatedList.unshift(defaultCandles);
-              }
+            // Verify that the saved folders contain the actual current categories
+            const hasCandleFolder = parsed.some((f: GalleryFolder) => f.id === 'folder-candles' || f.name.toLowerCase().includes('candle'));
+            if (!hasCandleFolder) {
+              return parsed;
             }
-            // Ensure the new custom mug image (id: 22) is in the custom mugs / drinkware folder
-            const mugImageObj = ALL_RAW_IMAGES.find(img => img.id === 22) || {
-              id: 22,
-              imgUrl: "https://lh3.googleusercontent.com/d/1e5r0ZIUnQX_EzUgWZH8vOPkeoTqoSPw_",
-              title: "Personalized Custom Mug",
-              content: "Bespoke handcrafted custom mug personalized with precision vinyl detailing for your favorite brew.",
-              visible: true,
-            };
-
-            updatedList = updatedList.map((f: GalleryFolder) => {
-              if (f.id === 'folder-drinkware' || f.name.toLowerCase().includes('mug') || f.name.toLowerCase().includes('drinkware')) {
-                const hasMug = f.images.some(img => img.id === 22 || img.imgUrl.includes('1e5r0ZIUnQX_EzUgWZH8vOPkeoTqoSPw_'));
-                if (!hasMug) {
-                  return {
-                    ...f,
-                    name: f.name.includes("Mug") ? f.name : "Custom Mugs & Drinkware",
-                    coverImageId: 22,
-                    images: [{ ...mugImageObj, visible: true }, ...f.images],
-                  };
-                }
-              }
-              return f;
-            });
-
-            return updatedList;
           }
         }
       } catch (e) {
@@ -407,7 +270,7 @@ export default function App() {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.4, duration: 0.6 }}
-              onClick={() => scrollToSection('shop')}
+              onClick={() => scrollToSection('gallery')}
               className="flex-1 bg-white rounded-[24px] sm:rounded-[40px] p-4 sm:p-6 flex flex-col justify-between items-center text-center border-b-4 border-brand-cream soft-shadow group hover:-translate-y-1 transition-transform cursor-pointer relative overflow-hidden"
             >
               {/* Image thumbnail feature */}
@@ -430,29 +293,29 @@ export default function App() {
         {/* Small Bottom Features Row */}
         <div className="mt-8 flex flex-col sm:flex-row justify-between items-center gap-6 sm:gap-8 px-2 sm:px-4">
           <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
-             <div className="flex flex-col items-center gap-2 group cursor-pointer" onClick={() => scrollToSection('shop')}>
+             <div className="flex flex-col items-center gap-2 group cursor-pointer" onClick={() => scrollToSection('gallery')}>
                <div className="w-16 h-16 sm:w-20 sm:h-20 bg-white rounded-2xl sm:rounded-3xl flex items-center justify-center soft-shadow border border-brand-cream group-hover:-translate-y-1 transition-transform">
-                 <Gift className="w-6 h-6 text-brand-olive" strokeWidth={1.5} />
+                 <Coffee className="w-6 h-6 text-brand-olive" strokeWidth={1.5} />
                </div>
-               <span className="text-[8px] sm:text-[9px] uppercase tracking-widest text-brand-taupe font-bold">Gifts</span>
+               <span className="text-[8px] sm:text-[9px] uppercase tracking-widest text-brand-taupe font-bold">Mugs</span>
              </div>
-             <div className="flex flex-col items-center gap-2 group cursor-pointer" onClick={() => scrollToSection('shop')}>
+             <div className="flex flex-col items-center gap-2 group cursor-pointer" onClick={() => scrollToSection('gallery')}>
                <div className="w-16 h-16 sm:w-20 sm:h-20 bg-brand-cream rounded-2xl sm:rounded-3xl flex items-center justify-center soft-shadow border border-brand-beige group-hover:-translate-y-1 transition-transform">
                  <Home className="w-6 h-6 text-brand-charcoal" strokeWidth={1.5} />
                </div>
-               <span className="text-[8px] sm:text-[9px] uppercase tracking-widest text-brand-taupe font-bold">Decor</span>
+               <span className="text-[8px] sm:text-[9px] uppercase tracking-widest text-brand-taupe font-bold">Kitchen</span>
              </div>
-             <div className="flex flex-col items-center gap-2 group cursor-pointer" onClick={() => scrollToSection('shop')}>
+             <div className="flex flex-col items-center gap-2 group cursor-pointer" onClick={() => scrollToSection('gallery')}>
                <div className="w-16 h-16 sm:w-20 sm:h-20 bg-brand-beige rounded-2xl sm:rounded-3xl flex items-center justify-center soft-shadow border border-brand-taupe/20 group-hover:-translate-y-1 transition-transform">
-                 <Flower2 className="w-6 h-6 text-brand-olive" strokeWidth={1.5} />
+                 <Sparkles className="w-6 h-6 text-brand-olive" strokeWidth={1.5} />
+               </div>
+               <span className="text-[8px] sm:text-[9px] uppercase tracking-widest text-brand-taupe font-bold">Frames</span>
+             </div>
+             <div className="flex flex-col items-center gap-2 group cursor-pointer" onClick={() => scrollToSection('gallery')}>
+               <div className="w-16 h-16 sm:w-20 sm:h-20 bg-brand-sage rounded-2xl sm:rounded-3xl flex items-center justify-center soft-shadow border border-brand-olive/20 group-hover:-translate-y-1 transition-transform">
+                 <Flower2 className="w-6 h-6 text-white" strokeWidth={1.5} />
                </div>
                <span className="text-[8px] sm:text-[9px] uppercase tracking-widest text-brand-taupe font-bold">Seasonal</span>
-             </div>
-             <div className="flex flex-col items-center gap-2 group cursor-pointer" onClick={() => scrollToSection('shop')}>
-               <div className="w-16 h-16 sm:w-20 sm:h-20 bg-brand-sage rounded-2xl sm:rounded-3xl flex items-center justify-center soft-shadow border border-brand-olive/20 group-hover:-translate-y-1 transition-transform">
-                 <Sparkles className="w-6 h-6 text-white" strokeWidth={1.5} />
-               </div>
-               <span className="text-[8px] sm:text-[9px] uppercase tracking-widest text-brand-taupe font-bold">Custom</span>
              </div>
           </div>
           

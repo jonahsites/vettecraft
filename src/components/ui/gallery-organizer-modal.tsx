@@ -601,7 +601,7 @@ export const GalleryOrganizerModal: React.FC<GalleryOrganizerModalProps> = ({
                   {/* Image Thumbnail */}
                   <div 
                     onClick={() => handleToggleImageVisibility(index)}
-                    className="relative aspect-square w-full overflow-hidden bg-brand-cream/40 cursor-pointer"
+                    className="relative aspect-square w-full min-h-[130px] shrink-0 overflow-hidden bg-brand-cream/40 cursor-pointer"
                   >
                     <img
                       src={item.imgUrl}

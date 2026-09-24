@@ -3,11 +3,11 @@ import { motion } from "motion/react";
 import { Upload, Type, Eraser, Check, Mail, Send, Image as ImageIcon, Sparkles, Move } from "lucide-react";
 
 const PRODUCT_CATEGORIES = [
-  { id: "signs", name: "Custom Sign & Wood Plaque", description: "Beautiful hand-painted signs with custom lettering." },
-  { id: "drinkware", name: "Custom Drinkware & Mug", description: "Elegant cups with scratch-resistant premium vinyl." },
-  { id: "seasonal", name: "Seasonal / Ornaments", description: "Festive shapes and tags designed for changing seasons." },
-  { id: "giftbox", name: "Custom Keepsake Box", description: "Lidded memory boxes personalized with names or messages." },
-  { id: "other", name: "Bespoke / Custom Pieces", description: "Any other special custom item of your imagination!" }
+  { id: "mugs", name: "Personalized Mugs", description: "Personalized mini mugs in your choice of color and custom titles." },
+  { id: "kitchen", name: "Kitchen Decor", description: "Decorative kitchen boards, coffee pieces, and culinary accents." },
+  { id: "frames", name: "Handcrafted Frames & Home Decor", description: "Framed scripture pieces, family & grandparents designs, and inspirational home art." },
+  { id: "seasonal", name: "Seasonal Decor", description: "Handcrafted wreaths, holiday signs, and festive collections." },
+  { id: "other", name: "Bespoke / Custom Creations", description: "Any other special custom item of your imagination!" }
 ];
 
 const FONTS = [

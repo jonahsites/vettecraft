@@ -163,35 +163,54 @@ export const FolderDetailModal: React.FC<FolderDetailModalProps> = ({
               <div
                 key={img.id || idx}
                 onClick={() => setSelectedImageIndex(idx)}
-                className="group relative bg-white rounded-[22px] overflow-hidden border border-brand-beige/70 hover:border-brand-olive hover:shadow-xl transition-all duration-300 flex flex-col cursor-pointer"
+                className="group relative bg-white rounded-[22px] overflow-hidden border border-brand-beige/70 hover:border-brand-olive hover:shadow-xl transition-all duration-300 flex flex-col cursor-pointer shadow-sm"
               >
-                {/* Image display */}
-                <div className="relative aspect-[4/3] w-full overflow-hidden bg-brand-cream/30">
+                {/* Image display with guaranteed fixed height & shrink-0 so it cannot collapse */}
+                <div className="relative w-full h-56 sm:h-64 shrink-0 overflow-hidden bg-brand-cream/40 flex items-center justify-center">
+                  {/* Subtle placeholder pattern while loading */}
+                  <div className="absolute inset-0 bg-[#F4EFEA] flex flex-col items-center justify-center text-brand-taupe/30">
+                    <Sparkles className="w-7 h-7 mb-1" />
+                    <span className="text-[10px] font-bold uppercase tracking-widest">VetteCraft</span>
+                  </div>
+
                   <img
                     src={img.imgUrl}
                     alt={img.title || `Creation ${idx + 1}`}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="relative z-10 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading={idx < 6 ? "eager" : "lazy"}
+                    decoding="async"
                     referrerPolicy="no-referrer"
+                    onError={(e) => {
+                      // Safety fallback if external image fails
+                      const target = e.currentTarget;
+                      target.style.opacity = '0.9';
+                    }}
                   />
-                  <div className="absolute inset-0 bg-brand-charcoal/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                    <span className="px-3 py-1.5 rounded-full bg-white/95 text-brand-charcoal text-xs font-bold shadow flex items-center gap-1.5 transform translate-y-2 group-hover:translate-y-0 transition-transform">
-                      <Maximize2 size={13} /> View Fullscreen
+                  <div className="absolute inset-0 z-20 bg-brand-charcoal/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-[1px]">
+                    <span className="px-3.5 py-1.5 rounded-full bg-white/95 text-brand-charcoal text-xs font-bold shadow-md flex items-center gap-1.5 transform translate-y-2 group-hover:translate-y-0 transition-transform">
+                      <Maximize2 size={13} className="text-brand-olive" /> View Fullscreen
                     </span>
                   </div>
                 </div>
 
                 {/* Content caption */}
-                <div className="p-4 flex-1 flex flex-col justify-between bg-white">
-                  {img.title && (
-                    <h4 className="font-adren font-bold text-sm sm:text-base text-brand-charcoal mb-1">
-                      {img.title}
-                    </h4>
-                  )}
-                  {img.content && (
-                    <p className="text-xs text-brand-taupe leading-relaxed font-sans line-clamp-2">
-                      {img.content}
-                    </p>
-                  )}
+                <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between bg-white border-t border-brand-beige/30">
+                  <div>
+                    {img.title && (
+                      <h4 className="font-adren font-bold text-sm sm:text-base text-brand-charcoal leading-snug mb-1.5 group-hover:text-brand-olive transition-colors">
+                        {img.title}
+                      </h4>
+                    )}
+                    {img.content && (
+                      <p className="text-xs text-brand-taupe leading-relaxed font-sans line-clamp-2">
+                        {img.content}
+                      </p>
+                    )}
+                  </div>
+                  <div className="mt-3 pt-2.5 border-t border-brand-beige/30 flex items-center justify-between text-[11px] font-semibold text-brand-olive group-hover:text-brand-charcoal transition-colors">
+                    <span>Click to view creation</span>
+                    <span className="text-xs">&rarr;</span>
+                  </div>
                 </div>
               </div>
             ))}
